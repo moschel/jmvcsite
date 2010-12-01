@@ -2,7 +2,7 @@ require 'zip/zip'
 class ApplicationController < ActionController::Base
   def pluginify
   	# get each file, append
-    Zip::ZipOutputStream::open("my.zip") { |io|
+    Zip::ZipOutputStream::open("tmp/javascripvmvc.zip") { |io|
 	  	params.each do |name, deps|
 	  		deps = deps.split(",")
 	  		next if name == "action" || name == "controller"
@@ -13,30 +13,31 @@ class ApplicationController < ActionController::Base
 	  		min_name = standalone_name.gsub(/\.js$/, '.min.js')
 	  		saved_min_path = 'public/jquery/dist/pluginify/'+min_name
 	  		
-	  		if !(File.exists? saved_path)
+	  		#if !(File.exists? saved_path)
 			  	standalone = ""
 			  	min = ""
 		  		for dep in deps
-		  			dep_path = 'public/jquery/dist/standalone/'+dep.gsub(/\/\w+\.js/, '.js').gsub(/\//, '.')
+		  			dep_name = dep.gsub(/\/\w+\.js/, '.js').gsub(/\//, '.')
+		  			dep_path = 'public/jquery/dist/standalone/'+dep_name
 		  			dep_min_path = dep_path.gsub(/\.js$/, '.min.js')
-		  			standalone += "\n//"+dep_path+"\n\n"
+		  			standalone += "\n//"+dep_name+"\n\n"
 		  			standalone += (get_file_as_string dep_path)+"\n"
 		  			min += get_file_as_string dep_min_path
 				end
-				write_file_as_string saved_path, standalone
-				write_file_as_string saved_min_path, min
-			end
+				#write_file_as_string saved_path, standalone
+				#write_file_as_string saved_min_path, min
+			#end
 			
   			# zip everything up
 		    io.put_next_entry(standalone_name)
-		    io.write(get_file_as_string saved_path)
+		    io.write(standalone)
 		    
 		    io.put_next_entry(min_name)
-		    io.write(get_file_as_string saved_min_path)
+		    io.write(min)
 	  	end
     }
    
-  	send_file 'javascriptmvc.zip', :type=>"application/zip" 
+  	send_file 'tmp/javascripvmvc.zip', :type=>"application/zip" 
   end
   
 	def get_file_as_string(filename)
