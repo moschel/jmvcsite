@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 	  	end
     }
    
-  	send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", 
+  	send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", :stream => false,
   		:filename => "javascriptmvc.zip", :type=>"application/zip"
   end
   
