@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
 	  	end
     }
    
-	txt = get_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}"
-  	send_data txt, :filename => "javascriptmvc.zip", :type=>"application/zip"
+  	send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", 
+  		:filename => "javascriptmvc.zip", :type=>"application/zip"
   end
   
 	def get_file_as_string(filename)
