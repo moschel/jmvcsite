@@ -7,27 +7,48 @@ $.Controller.extend('Pluginify.Controllers.Plugins',
   * Load dependencies file
   */
  load: function(){
-	 $.getJSON('/jquery/dist/standalone/dependencies.json', 
-	 	this.callback('plugins'));
+ 	this.dependencies = [];
+	$.getJSON('/jquery/dist/standalone/dependencies.json', 
+		this.callback('plugins'));
  },
  plugins: function(data){
  	this.pluginData = data;
  	$('#plugins').append(this.view());
  },
+ 'input[type=checkbox] change': function(el, ev){
+ 	this.dependencies = [];
+ 	var $form = el.closest('form'),
+		params = $form.formParams(), i;
+	for(i=0; i<params.plugins.length; i++){
+		this._pushPlugins(this._getDependencies(params.plugins[i]));
+	}
+	$('#pluginForm input[type=checkbox]').attr('checked', false);
+	for(i=0; i<this.dependencies.length; i++){
+		$('input[value='+this.dependencies[i]+']').attr('checked', true);
+	}
+ },
  'form submit': function(el, ev){
  	ev.preventDefault();
- 	var params = el.formParams(), 
-		serverParams = [], 
-		i, plugin; 
-	for(i=0; i<params.plugins.length; i++){
-		plugin = {
-			name: params.plugins[i],
-			value: this._getDependencies(params.plugins[i])
+	// perform request and download
+	window.location.href = '/pluginify?'+jQuery.param({
+		plugins: this.dependencies
+	});
+ },
+ /**
+  * Push a list of plugins to the current list.  If there's a duplicate, 
+  * delete the other one first.
+  * @param {Object} dependencies an array of plugins to add to the list
+  */
+ _pushPlugins: function(dependencies){
+ 	var dep, i, index;
+ 	for(i=0; i<dependencies.length; i++){
+		dep = dependencies[i];
+		index = this.dependencies.indexOf(dep);
+		if(index != -1) {
+			this.dependencies.splice(index, 1);
 		}
-		serverParams.push(plugin);
+		this.dependencies.push(dep);
 	}
-	window.location.href = '/pluginify?'+jQuery.param(serverParams);
-	
  },
  /**
   * Recursively gets the array of dependencies for each plugin
