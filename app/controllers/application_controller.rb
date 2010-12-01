@@ -41,17 +41,18 @@ class ApplicationController < ActionController::Base
     }
    
    @output = standalone
-  	#send_file "#{RAILS_ROOT}/tmp/javascriptmvc.zip", :type=>"application/zip"
-  	   #Zip::ZipFile.open("#{RAILS_ROOT}/tmp/my.zip", Zip::ZipFile::CREATE) {
-	   # |zipfile|
-	   # zipfile.file.open("first.txt", "w") { |f| f.puts "Hello world" }
-	   # zipfile.dir.mkdir("mydir")
-	   # zipfile.file.open("mydir/second.txt", "w") { |f| f.puts "Hello again" }
-	  #}
-  	#send_file "#{RAILS_ROOT}/tmp/my.zip", :type=>"application/zip"
-	  write_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", "hi world"
+  	#send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", :type=>"application/zip"
+  	   Zip::ZipFile.open("#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", Zip::ZipFile::CREATE) {
+	    |zipfile|
+	    zipfile.file.open("first.txt", "w") { |f| f.puts "Hello world" }
+	    zipfile.dir.mkdir("mydir")
+	    zipfile.file.open("mydir/second.txt", "w") { |f| f.puts "Hello again" }
+	  }
 	  txt = get_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}"
-  	  send_data txt, :filename => "hi.txt"
+  	  send_data txt, :filename => "javascriptmvc.zip", :type=>"application/zip"
+	  #write_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", "hi world"
+	  #txt = get_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}"
+  	  #send_data txt, :filename => "hi.txt"
 	  
   end
   
