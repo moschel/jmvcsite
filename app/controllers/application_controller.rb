@@ -42,13 +42,16 @@ class ApplicationController < ActionController::Base
    
    @output = standalone
   	#send_file "#{RAILS_ROOT}/tmp/javascriptmvc.zip", :type=>"application/zip"
-  	   Zip::ZipFile.open("#{RAILS_ROOT}/tmp/my.zip", Zip::ZipFile::CREATE) {
-	    |zipfile|
-	    zipfile.file.open("first.txt", "w") { |f| f.puts "Hello world" }
-	    zipfile.dir.mkdir("mydir")
-	    zipfile.file.open("mydir/second.txt", "w") { |f| f.puts "Hello again" }
-	  }
-  	send_file "#{RAILS_ROOT}/tmp/my.zip", :type=>"application/zip"
+  	   #Zip::ZipFile.open("#{RAILS_ROOT}/tmp/my.zip", Zip::ZipFile::CREATE) {
+	   # |zipfile|
+	   # zipfile.file.open("first.txt", "w") { |f| f.puts "Hello world" }
+	   # zipfile.dir.mkdir("mydir")
+	   # zipfile.file.open("mydir/second.txt", "w") { |f| f.puts "Hello again" }
+	  #}
+  	#send_file "#{RAILS_ROOT}/tmp/my.zip", :type=>"application/zip"
+	  write_file_as_string "#{RAILS_ROOT}/tmp/hi.txt", "hi world"
+	  get_file_as_string "#{RAILS_ROOT}/tmp/hi.txt"
+  	  send_file "#{RAILS_ROOT}/tmp/hi.txt"
 	  
   end
   
