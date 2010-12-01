@@ -1,0 +1,1 @@
+C({"name": "jQuery.Model.prototype.isNew", "params": {}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "jQuery.Model.prototype", "comment": "<p>Returns if the instance is a new object</p>", "children": []})

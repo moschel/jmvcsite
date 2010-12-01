@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>jQuery fn formParams - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>jQuery.fn.formParams&nbsp;
+	    	<span class='function type'><span class="typeEnd">function</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+	    <div class='plugin'>
+	        plugin: jquery/dom/form_params
+	    </div>
+	    
+		
+	    <div class='download'>
+	        download: <a href='jquery/dist/jquery.formparams.js'>jquery.formparams.js</a>
+	    </div>
+	    
+		
+	    <div class='test'>
+	        test: <a href='jquery/dom/form_params/qunit.html'>qunit.html</a>
+	    </div>
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+ 
+ <div class='comment'><p>Returns an object of name-value pairs that represents values in a form.  
+It is able to nest values whose element's name has square brackets. </p>
+
+<p>Example html:</p>
+
+<pre><code class='html'>&lt;form>
+  &lt;input name="foo[bar]" value='2'/>
+  &lt;input name="foo[ced]" value='4'/>
+&lt;form/></code></pre>Example code:
+
+<pre><code class='javascript'>$('form').formParams() //-> { foo:{bar:2, ced: 4} }</code></pre>
+
+<div class='demo_wrapper' data-demo-src='jquery/dom/form_params/form_params.html'></div></div>
+ <pre class='signiture'><code>$.fn.formParams(convert) -> Object</code></pre>
+  
+  <div class='params'>
+  
+    
+      <div class='param optional'>
+          <label>convert</label>
+          <code>{optional:Boolean}</code> 
+		   <p>True if strings that look like numbers and booleans should be converted.  Defaults to true.</p>
+      </div>
+ 
+
+ 
+     <div class='return'>
+         <label>returns</label> 
+         <code>{Object}</code> 
+		 <p>An object of name-value pairs.</p>
+     </div>
+    
+ 
+ </div>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

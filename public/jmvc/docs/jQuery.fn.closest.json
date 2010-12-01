@@ -1,0 +1,1 @@
+C({"name": "jQuery.fn.closest", "type": "function", "parent": "jQuery.fn", "comment": "<p>Overwrites closest to allow open > selectors.  This allows controller actions such as:</p>\n\n<pre><code class='javascript'>\">li click\" : function( el, ev ) { ... }</code></pre> ", "parents": ["dom"], "children": []})

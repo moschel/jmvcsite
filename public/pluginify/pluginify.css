@@ -1,0 +1,19 @@
+body {font-family: verdana;
+  font-size: 1.4em;
+}
+h1, p {
+	padding: 10px;
+	margin: 10px;
+}
+#pluginForm {
+	margin: 0 20px;
+}
+p {
+	padding: 10px;
+	margin: 10px;
+}
+
+.plugin input {
+	float:left;
+	margin: 10px 10px 0 0;
+}

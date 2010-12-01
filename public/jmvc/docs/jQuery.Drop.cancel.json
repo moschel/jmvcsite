@@ -1,0 +1,1 @@
+C({"name": "jQuery.Drop.cancel", "params": {}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "jQuery.Drop", "comment": "<p>Prevents this drop from being dropped on.</p>", "children": []})

@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>jQuery event special default - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>jQuery.event.special.default&nbsp;
+	    	<span class='attribute type'><span class="typeEnd">attribute</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+	    <div class='plugin'>
+	        plugin: jquery/event/default
+	    </div>
+	    
+		
+	    <div class='download'>
+	        download: <a href='jquery/dist/jquery.event.default.js'>jquery.event.default.js</a>
+	    </div>
+	    
+		
+	    <div class='test'>
+	        test: <a href='jquery/event/default/qunit.html'>qunit.html</a>
+	    </div>
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+ 
+<p>Allows you to perform default actions as a result of an event.</p>
+
+<p>
+Event based APIs are a powerful way of exposing functionality of your widgets.  It also fits in 
+quite nicely with how the DOM works.
+</p>
+
+<p>
+Like default events in normal functions (e.g. submitting a form), synthetic default events run after
+all event handlers have been triggered and no event handler has called
+preventDefault or returned false.
+</p>
+
+<p>To listen for a default event, just prefix the event with default.</p>
+
+<pre><code class='javascript'>$("div").bind("default.show", function(ev){ ... });
+$("ul").delegate("li","default.activate", function(ev){ ... });</code></pre><p>
+The default plugin also adds the <a href='jQuery.fn.triggerDefault.html'>triggerDefault</a> and <a href='jQuery.fn.triggerDefaults.html'>triggerDefaults</a> methods.  These are used to trigger 
+an event and report back whether preventDefault was called on the event.  The only difference is <a href='jQuery.fn.triggerDefault.html'>triggerDefault</a> 
+doesn't bubble.
+</p>
+
+<h2>Example</h2>
+
+<p>Lets look at how you could build a simple tabs widget with default events.
+First with just jQuery:</p>
+<p>
+Default events are useful in cases where you want to provide an event based 
+API for users of your widgets.  Users can simply listen to your synthetic events and 
+prevent your default functionality by calling preventDefault.  
+</p>
+
+<p>
+In the example below, the tabs widget provides a show event.  Users of the 
+tabs widget simply listen for show, and if they wish for some reason, call preventDefault 
+to avoid showing the tab.
+</p>
+
+<p>
+In this case, the application developer doesn't want to show the second 
+tab until the checkbox is checked. 
+</p>
+
+<div class='demo_wrapper' data-demo-src='jquery/event/default/defaultjquery.html'></div><p>Lets see how we would build this with JavaScriptMVC:</p>
+<div class='demo_wrapper' data-demo-src='jquery/event/default/default.html'></div>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

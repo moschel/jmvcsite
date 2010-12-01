@@ -1,0 +1,487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>q - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>q&nbsp;
+	    	<span class='attribute type'><span class="typeEnd">attribute</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+ 
+<p>"
+        }
+    },</p>
+
+<p><pre><code>ajax: function( origSettings ) {
+    var s = jQuery.extend(true, {}, jQuery.ajaxSettings, origSettings),
+        jsonp, status, data, type = s.type.toUpperCase(), noContent = rnoContent.test(type);</p>
+
+<pre><code>s.url = s.url.replace( rhash, "" );
+
+// Use original (not extended) context object if it was provided
+s.context = origSettings &amp;amp;&amp;amp; origSettings.context != null ? origSettings.context : s;
+
+// convert data if not already a string
+if ( s.data &amp;amp;&amp;amp; s.processData &amp;amp;&amp;amp; typeof s.data !== "string" ) {
+    s.data = jQuery.param( s.data, s.traditional );
+}
+
+// Handle JSONP Parameter Callbacks
+if ( s.dataType === "jsonp" ) {
+    if ( type === "GET" ) {
+        if ( !jsre.test( s.url ) ) {
+            s.url += (rquery.test( s.url ) ? "&amp;amp;" : "?") + (s.jsonp || "callback") + "=?";
+        }
+    } else if ( !s.data || !jsre.test(s.data) ) {
+        s.data = (s.data ? s.data + "&amp;amp;" : "") + (s.jsonp || "callback") + "=?";
+    }
+    s.dataType = "json";
+}
+
+// Build temporary JSONP function
+if ( s.dataType === "json" &amp;amp;&amp;amp; (s.data &amp;amp;&amp;amp; jsre.test(s.data) || jsre.test(s.url)) ) {
+    jsonp = s.jsonpCallback || ("jsonp" + jsc++);
+
+    // Replace the =? sequence both in the query string and the data
+    if ( s.data ) {
+        s.data = (s.data + "").replace(jsre, "=" + jsonp + "$1");
+    }
+
+    s.url = s.url.replace(jsre, "=" + jsonp + "$1");
+
+    // We need to make sure
+    // that a JSONP style response is executed properly
+    s.dataType = "script";
+
+    // Handle JSONP-style loading
+    var customJsonp = window[ jsonp ];
+
+    window[ jsonp ] = function( tmp ) {
+        data = tmp;
+        jQuery.handleSuccess( s, xhr, status, data );
+        jQuery.handleComplete( s, xhr, status, data );
+
+        if ( jQuery.isFunction( customJsonp ) ) {
+            customJsonp( tmp );
+
+        } else {
+            // Garbage collect
+            window[ jsonp ] = undefined;
+
+            try {
+                delete window[ jsonp ];
+            } catch( jsonpError ) {}
+        }
+
+        if ( head ) {
+            head.removeChild( script );
+        }
+    };
+}
+
+if ( s.dataType === "script" &amp;amp;&amp;amp; s.cache === null ) {
+    s.cache = false;
+}
+
+if ( s.cache === false &amp;amp;&amp;amp; type === "GET" ) {
+    var ts = jQuery.now();
+
+    // try replacing _= if it is there
+    var ret = s.url.replace(rts, "$1_=" + ts);
+
+    // if nothing was replaced, add timestamp to the end
+    s.url = ret + ((ret === s.url) ? (rquery.test(s.url) ? "&amp;amp;" : "?") + "_=" + ts : "");
+}
+
+// If data is available, append data to url for get requests
+if ( s.data &amp;amp;&amp;amp; type === "GET" ) {
+    s.url += (rquery.test(s.url) ? "&amp;amp;" : "?") + s.data;
+}
+
+// Watch for a new set of requests
+if ( s.global &amp;amp;&amp;amp; jQuery.active++ === 0 ) {
+    jQuery.event.trigger( "ajaxStart" );
+}
+
+// Matches an absolute URL, and saves the domain
+var parts = rurl.exec( s.url ),
+    remote = parts &amp;amp;&amp;amp; (parts[1] &amp;amp;&amp;amp; parts[1] !== location.protocol || parts[2] !== location.host);
+
+// If we're requesting a remote document
+// and trying to load JSON or Script with a GET
+if ( s.dataType === "script" &amp;amp;&amp;amp; type === "GET" &amp;amp;&amp;amp; remote ) {
+    var head = document.getElementsByTagName("head")[0] || document.documentElement;
+    var script = document.createElement("script");
+    if ( s.scriptCharset ) {
+        script.charset = s.scriptCharset;
+    }
+    script.src = s.url;
+
+    // Handle Script loading
+    if ( !jsonp ) {
+        var done = false;
+
+        // Attach handlers for all browsers
+        script.onload = script.onreadystatechange = function() {
+            if ( !done &amp;amp;&amp;amp; (!this.readyState ||
+                    this.readyState === "loaded" || this.readyState === "complete") ) {
+                done = true;
+                jQuery.handleSuccess( s, xhr, status, data );
+                jQuery.handleComplete( s, xhr, status, data );
+
+                // Handle memory leak in IE
+                script.onload = script.onreadystatechange = null;
+                if ( head &amp;amp;&amp;amp; script.parentNode ) {
+                    head.removeChild( script );
+                }
+            }
+        };
+    }
+
+    // Use insertBefore instead of appendChild  to circumvent an IE6 bug.
+    // This arises when a base node is used (#2709 and #4378).
+    head.insertBefore( script, head.firstChild );
+
+    // We handle everything using the script element injection
+    return undefined;
+}
+
+var requestDone = false;
+
+// Create the request object
+var xhr = s.xhr();
+
+if ( !xhr ) {
+    return;
+}
+
+// Open the socket
+// Passing null username, generates a login popup on Opera (#2865)
+if ( s.username ) {
+    xhr.open(type, s.url, s.async, s.username, s.password);
+} else {
+    xhr.open(type, s.url, s.async);
+}
+
+// Need an extra try/catch for cross domain requests in Firefox 3
+try {
+    // Set content-type if data specified and content-body is valid for this type
+    if ( (s.data != null &amp;amp;&amp;amp; !noContent) || (origSettings &amp;amp;&amp;amp; origSettings.contentType) ) {
+        xhr.setRequestHeader("Content-Type", s.contentType);
+    }
+
+    // Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+    if ( s.ifModified ) {
+        if ( jQuery.lastModified[s.url] ) {
+            xhr.setRequestHeader("If-Modified-Since", jQuery.lastModified[s.url]);
+        }
+
+        if ( jQuery.etag[s.url] ) {
+            xhr.setRequestHeader("If-None-Match", jQuery.etag[s.url]);
+        }
+    }
+
+    // Set header so the called script knows that it's an XMLHttpRequest
+    // Only send the header if it's not a remote XHR
+    if ( !remote ) {
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    }
+
+    // Set the Accepts header for the server, depending on the dataType
+    xhr.setRequestHeader("Accept", s.dataType &amp;amp;&amp;amp; s.accepts[ s.dataType ] ?
+        s.accepts[ s.dataType ] + ", 
+</code></pre>
+
+<p></code></pre>"
+        }
+    },</p>
+
+<pre><code>ajax: function( origSettings ) {
+    var s = jQuery.extend(true, {}, jQuery.ajaxSettings, origSettings),
+        jsonp, status, data, type = s.type.toUpperCase(), noContent = rnoContent.test(type);
+
+    s.url = s.url.replace( rhash, "" );
+
+    // Use original (not extended) context object if it was provided
+    s.context = origSettings &amp;&amp; origSettings.context != null ? origSettings.context : s;
+
+    // convert data if not already a string
+    if ( s.data &amp;&amp; s.processData &amp;&amp; typeof s.data !== "string" ) {
+        s.data = jQuery.param( s.data, s.traditional );
+    }
+
+    // Handle JSONP Parameter Callbacks
+    if ( s.dataType === "jsonp" ) {
+        if ( type === "GET" ) {
+            if ( !jsre.test( s.url ) ) {
+                s.url += (rquery.test( s.url ) ? "&amp;" : "?") + (s.jsonp || "callback") + "=?";
+            }
+        } else if ( !s.data || !jsre.test(s.data) ) {
+            s.data = (s.data ? s.data + "&amp;" : "") + (s.jsonp || "callback") + "=?";
+        }
+        s.dataType = "json";
+    }
+
+    // Build temporary JSONP function
+    if ( s.dataType === "json" &amp;&amp; (s.data &amp;&amp; jsre.test(s.data) || jsre.test(s.url)) ) {
+        jsonp = s.jsonpCallback || ("jsonp" + jsc++);
+
+        // Replace the =? sequence both in the query string and the data
+        if ( s.data ) {
+            s.data = (s.data + "").replace(jsre, "=" + jsonp + "$1");
+        }
+
+        s.url = s.url.replace(jsre, "=" + jsonp + "$1");
+
+        // We need to make sure
+        // that a JSONP style response is executed properly
+        s.dataType = "script";
+
+        // Handle JSONP-style loading
+
+        var customJsonp = window[ jsonp ];
+
+        window[ jsonp ] = function( tmp ) {
+            if ( jQuery.isFunction( customJsonp ) ) {
+                customJsonp( tmp );
+
+            } else {
+                // Garbage collect
+                window[ jsonp ] = undefined;
+
+                try {
+                    delete window[ jsonp ];
+                } catch( jsonpError ) {}
+            }
+
+            data = tmp;
+            jQuery.handleSuccess( s, xhr, status, data );
+            jQuery.handleComplete( s, xhr, status, data );
+
+            if ( head ) {
+                head.removeChild( script );
+            }
+        };
+    }
+
+    if ( s.dataType === "script" &amp;&amp; s.cache === null ) {
+        s.cache = false;
+    }
+
+    if ( s.cache === false &amp;&amp; type === "GET" ) {
+        var ts = jQuery.now();
+
+        // try replacing _= if it is there
+        var ret = s.url.replace(rts, "$1_=" + ts);
+
+        // if nothing was replaced, add timestamp to the end
+        s.url = ret + ((ret === s.url) ? (rquery.test(s.url) ? "&amp;" : "?") + "_=" + ts : "");
+    }
+
+    // If data is available, append data to url for get requests
+    if ( s.data &amp;&amp; type === "GET" ) {
+        s.url += (rquery.test(s.url) ? "&amp;" : "?") + s.data;
+    }
+
+    // Watch for a new set of requests
+    if ( s.global &amp;&amp; jQuery.active++ === 0 ) {
+        jQuery.event.trigger( "ajaxStart" );
+    }
+
+    // Matches an absolute URL, and saves the domain
+    var parts = rurl.exec( s.url ),
+        remote = parts &amp;&amp; (parts[1] &amp;&amp; parts[1] !== location.protocol || parts[2] !== location.host);
+
+    // If we're requesting a remote document
+    // and trying to load JSON or Script with a GET
+    if ( s.dataType === "script" &amp;&amp; type === "GET" &amp;&amp; remote ) {
+        var head = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        if ( s.scriptCharset ) {
+            script.charset = s.scriptCharset;
+        }
+        script.src = s.url;
+
+        // Handle Script loading
+        if ( !jsonp ) {
+            var done = false;
+
+            // Attach handlers for all browsers
+            script.onload = script.onreadystatechange = function() {
+                if ( !done &amp;&amp; (!this.readyState ||
+                        this.readyState === "loaded" || this.readyState === "complete") ) {
+                    done = true;
+                    jQuery.handleSuccess( s, xhr, status, data );
+                    jQuery.handleComplete( s, xhr, status, data );
+
+                    // Handle memory leak in IE
+                    script.onload = script.onreadystatechange = null;
+                    if ( head &amp;&amp; script.parentNode ) {
+                        head.removeChild( script );
+                    }
+                }
+            };
+        }
+
+        // Use insertBefore instead of appendChild  to circumvent an IE6 bug.
+        // This arises when a base node is used (#2709 and #4378).
+        head.insertBefore( script, head.firstChild );
+
+        // We handle everything using the script element injection
+        return undefined;
+    }
+
+    var requestDone = false;
+
+    // Create the request object
+    var xhr = s.xhr();
+
+    if ( !xhr ) {
+        return;
+    }
+
+    // Open the socket
+    // Passing null username, generates a login popup on Opera (#2865)
+    if ( s.username ) {
+        xhr.open(type, s.url, s.async, s.username, s.password);
+    } else {
+        xhr.open(type, s.url, s.async);
+    }
+
+    // Need an extra try/catch for cross domain requests in Firefox 3
+    try {
+        // Set content-type if data specified and content-body is valid for this type
+        if ( (s.data != null &amp;&amp; !noContent) || (origSettings &amp;&amp; origSettings.contentType) ) {
+            xhr.setRequestHeader("Content-Type", s.contentType);
+        }
+
+        // Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+        if ( s.ifModified ) {
+            if ( jQuery.lastModified[s.url] ) {
+                xhr.setRequestHeader("If-Modified-Since", jQuery.lastModified[s.url]);
+            }
+
+            if ( jQuery.etag[s.url] ) {
+                xhr.setRequestHeader("If-None-Match", jQuery.etag[s.url]);
+            }
+        }
+
+        // Set header so the called script knows that it's an XMLHttpRequest
+        // Only send the header if it's not a remote XHR
+        if ( !remote ) {
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        }
+
+        // Set the Accepts header for the server, depending on the dataType
+        xhr.setRequestHeader("Accept", s.dataType &amp;&amp; s.accepts[ s.dataType ] ?
+            s.accepts[ s.dataType ] + ", 
+</code></pre>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

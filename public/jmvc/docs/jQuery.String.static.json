@@ -1,0 +1,1 @@
+C({"name": "jQuery.String.static", "type": "static", "parent": "jQuery.String", "comment": "", "children": ["jQuery.String.static.strip", "jQuery.String.static.capitalize", "jQuery.String.static.endsWith", "jQuery.String.static.camelize", "jQuery.String.static.classize", "jQuery.String.static.niceName", "jQuery.String.static.underscore", "jQuery.String.static.rsplit"]})

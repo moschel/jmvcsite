@@ -1,0 +1,1 @@
+C({"name": "jQuery.Controller.static.processors", "type": "attribute", "parent": "jQuery.Controller.static", "comment": "<p>A has of eventName: function pairs that Controller uses to hook </p>", "children": []})

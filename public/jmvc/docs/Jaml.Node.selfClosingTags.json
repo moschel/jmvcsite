@@ -1,0 +1,1 @@
+C({"name": "Jaml.Node.selfClosingTags", "type": "attribute", "parent": "Jaml.Node", "comment": "<p>An array of all tags that should be self closing</p>", "attribute_type": "@type Array", "children": []})

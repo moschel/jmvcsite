@@ -1,0 +1,1 @@
+C({"name": ".fn.prettySelector", "params": {"target": {"order": 0, "description": "", "name": "target", "type": "Object", "optional": false}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "../funcunit/resources/selector.js", "comment": "<p>Returns a unique selector for the matched element.</p>", "children": []})

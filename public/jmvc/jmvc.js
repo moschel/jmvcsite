@@ -1,0 +1,39 @@
+steal
+.plugins('steal/generate','steal/get','steal/build','steal/coffee','steal/less','steal/clean')
+
+.plugin('funcunit').
+then('pages/init').plugins('jquery',
+'jquery/controller',
+'jquery/view',
+	'jquery/view/ejs',
+	'jquery/view/jaml',
+	'jquery/view/micro',
+	'jquery/view/tmpl',
+'jquery/model',
+	'jquery/model/list',
+		'jquery/model/list/cookie',
+		'jquery/model/list/local',
+	'jquery/model/associations',
+	'jquery/model/backup',
+	'jquery/model/validations',
+'jquery/event/default',
+'jquery/event/destroyed',
+'jquery/event/drag','jquery/event/drag/limit','jquery/event/drag/scroll',
+'jquery/event/drop',
+'jquery/event/hover',
+'jquery/event/resize',
+'jquery/dom/compare',
+'jquery/dom/closest',
+'jquery/dom/within',
+'jquery/dom/form_params',
+'jquery/dom/dimensions',
+'jquery/dom/fixture',
+'jquery/dom/cookie',
+'documentjs'
+)
+.then(
+"//jquery/model/pages/encapsulate",
+"//jquery/model/pages/typeconversion",
+"//jquery/model/pages/events")
+
+

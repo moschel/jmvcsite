@@ -1,0 +1,9 @@
+<form id='pluginForm' action='/pluginify' type='POST'>
+<% for(var name in pluginData){ %>
+<div class='plugin'>
+	<label><%= name %></label>
+	<input type='checkbox' name='plugins[]' value='<%= name %>' />
+</div>
+<% } %>
+<input type='submit' value='Submit' />
+</form>

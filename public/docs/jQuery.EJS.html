@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>jQuery EJS - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+		
+		<div class="topCorner"><div>&nbsp;</div></div>
+		<div class="content">
+		    <a href="jQuery.EJS.html" class='selected choice class' style="padding-left: 20px">
+		    	<span class='remove' title="close"></span>
+				$.EJS
+				
+			</a>
+		
+		</div>
+		<div class="bottomCorner"><div>&nbsp;</div></div>
+			
+	
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+			
+		    <a href="javascript://.html" class='result choice prototype' style="padding-left: 40px">
+		    	prototype
+			</a>
+			
+		
+			
+		    <a href="jQuery.EJS.prototype.render.html" class='result choice function' style="padding-left: 60px">
+		    	render
+			</a>
+			
+		
+			
+		    <a href="javascript://.html" class='result choice static' style="padding-left: 40px">
+		    	static
+			</a>
+			
+		
+			
+		    <a href="jQuery.EJS.static.lineNumber.html" class='result choice attribute' style="padding-left: 60px">
+		    	lineNumber
+			</a>
+			
+		
+			
+		    <a href="jQuery.EJS.static.options.html" class='result choice attribute' style="padding-left: 60px">
+		    	options
+			</a>
+			
+		
+			
+		    <a href="jQuery.EJS.static.text.html" class='result choice function' style="padding-left: 60px">
+		    	text
+			</a>
+			
+		
+			
+		    <a href="jQuery.EJS.Helpers.html" class='result choice class' style="padding-left: 40px">
+		    	Helpers
+			</a>
+			
+		
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>jQuery.EJS&nbsp;
+	    	<span class='class type'><span class="typeEnd">class</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+	    <div class='plugin'>
+	        plugin: jquery/view/ejs
+	    </div>
+	    
+		
+	    <div class='download'>
+	        download: <a href='jquery/dist/jquery.view.ejs.js'>jquery.view.ejs.js</a>
+	    </div>
+	    
+		
+	    <div class='test'>
+	        test: <a href='jquery/view/ejs/qunit.html'>qunit.html</a>
+	    </div>
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+ 
+
+<p>Ejs provides <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">ERB</a> 
+style client side templates.  Use them with controllers to easily build html and inject
+it into the DOM.</p>
+
+<h3>Example</h3>
+
+<p>The following generates a list of tasks:</p>
+
+<pre><code class='html'>&lt;ul>
+&lt;% for(var i = 0; i < tasks.length; i++){ %>
+    &lt;li class="task &lt;%= tasks[i].identity %>">&lt;%= tasks[i].name %>&lt;/li>
+&lt;% } %>
+&lt;/ul></code></pre>For the following examples, we assume this view is in <i>'views\tasks\list.ejs'</i>
+<h2>Use</h2>
+There are 2 common ways to use Views: 
+
+<ul>
+    <li>Controller's <a href='jQuery.Controller.prototype.view.html'>view function</a></li>
+    <li>The jQuery Helpers: <a href='jQuery.fn.after.html'>after</a>, 
+                            <a href='jQuery.fn.append.html'>append</a>, 
+                            <a href='jQuery.fn.before.html'>before</a>, 
+                            <a href='jQuery.fn.before.html'>html</a>, 
+                            <a href='jQuery.fn.before.html'>prepend</a>, 
+                            <a href='jQuery.fn.before.html'>replace</a>, and 
+                            <a href='jQuery.fn.before.html'>text</a>.</li>
+</ul>
+
+<h3>View</h3>
+jQuery.Controller.prototype.view is the preferred way of rendering a view.  
+You can find all the options for render in 
+its <a href='jQuery.Controller.prototype.view.html'>documentation</a>, but here is a brief example of rendering the 
+<i>list.ejs</i> view from a controller:
+
+<pre><code class='javascript'>$.Controller.extend("TasksController",{
+    init: function( el ) {
+        Task.findAll({},this.callback('list'))
+    },
+    list: function( tasks ) {
+        this.element.html(
+         this.view("list", {tasks: tasks})
+       )
+    }
+})</code></pre>
+
+<h2>Hooking up controllers</h2>
+
+<p>After drawing some html, you often want to add other widgets and plugins inside that html.
+View makes this easy.  You just have to return the Contoller class you want to be hooked up.</p>
+
+<pre><code class='javascript'>&lt;ul &lt;%= Mxui.Tabs%>>...&lt;ul></code></pre>
+
+<p>You can even hook up multiple controllers:</p>
+
+<pre><code class='javascript'>&lt;ul &lt;%= [Mxui.Tabs, Mxui.Filler]%>>...&lt;ul></code></pre>
+
+<h2>View Helpers</h2>
+
+<p>View Helpers return html code.  View by default only comes with 
+<a href='jQuery.EJS.Helpers.prototype.view.html'>view</a> and [jQuery.EJS.Helpers.prototype.text text].
+You can include more with the view/helpers plugin.  But, you can easily make your own!
+Learn how in the <a href='jQuery.EJS.Helpers.html'>Helpers</a> page.</p>
+
+	<h2>Constructor</h2>
+	  Creates a new view
+
+
+
+<pre class='signiture'><code>new $.EJS(options) -> jquery.ejs</code></pre>
+
+
+  <div class='params'>
+  
+	    
+	      <div class='param '>
+	          <label>options</label>
+	          <code>{Object}</code>
+			  <p>A hash with the following options</p>
+
+<table class="options">
+    <tbody><tr><th>Option</th><th>Default</th><th>Description</th></tr>
+    <tr>
+     <td>url</td>
+     <td>&nbsp;</td>
+     <td>loads the template from a file.  This path should be relative to <i>[jQuery.root]</i>.
+     </td>
+    </tr>
+    <tr>
+     <td>text</td>
+     <td>&nbsp;</td>
+     <td>uses the provided text as the template. Example:<br/><code>new View({text: '&lt;%=user%>'})</code>
+     </td>
+    </tr>
+    <tr>
+     <td>element</td>
+     <td>&nbsp;</td>
+     <td>loads a template from the innerHTML or value of the element.
+     </td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>'<'</td>
+     <td>type of magic tags.  Options are '&lt;' or '['
+     </td>
+    </tr>
+    <tr>
+     <td>name</td>
+     <td>the element ID or url </td>
+     <td>an optional name that is used for caching.
+     </td>
+    </tr>
+    <tr>
+     <td>cache</td>
+     <td>true in production mode, false in other modes</td>
+     <td>true to cache template.
+     </td>
+    </tr>
+
+   </tbody></table>
+	      </div>
+	 
+ 
+ 
+     <div class='return'>
+         <label>returns</label> 
+         <code>{jquery.ejs}</code>
+		 
+     </div>
+    
+ 
+ </div>
+
+
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

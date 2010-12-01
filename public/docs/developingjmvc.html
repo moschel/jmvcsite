@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>developingjmvc - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>Developing JavaScriptMVC&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+
+ 
+
+<p>Awesome, you want to contribute back some code to JavaScriptMVC, or build your own
+download.  This article
+explains how.</p>
+
+<p>JavaScriptMVC is comprised of several projects, each with 
+it's own repository:</p>
+
+<ul>
+<li><a href='http://github.com/jupiterjs/steal'>http://github.com/jupiterjs/steal</a></li>
+<li><a href='http://github.com/jupiterjs/jquerymx'>http://github.com/jupiterjs/jquerymx</a></li>
+<li><a href='http://github.com/jupiterjs/documentjs'>http://github.com/jupiterjs/documentjs</a></li>
+<li><a href='http://github.com/jupiterjs/funcunit'>http://github.com/jupiterjs/funcunit</a></li>
+</ul>
+
+<p>These are collected in the javascriptmvc repository:</p>
+
+<ul>
+<li><a href='http://github.com/jupiterjs/javascriptmvc'>http://github.com/jupiterjs/javascriptmvc</a></li>
+</ul>
+
+<p>Read how to get, test, and build each project in JavaScriptMVC:</p>
+
+<h2>1.  Get</h2>
+
+<p>In Github, fork the repo you want to make changes to.  Then clone
+the javascriptmvc repo and install the submodules like:</p>
+
+<pre><code class='javascript'>git clone git@github.com:jupiterjs/javascriptmvc</code></pre>
+
+<p>Now, open the javascriptmvc folder's .gitmodule file and change the url of the submodule(s)
+you have forked.  For example, you might change:</p>
+
+<pre><code class='javascript'>    url = git://github.com/jupiterjs/jquerymx.git</code></pre>to
+
+<pre><code class='javascript'>    url = git://github.com/justinbmeyer/jquerymx.git</code></pre>
+
+<p>Now run:</p>
+
+<pre><code class='javascript'>cd javascriptmvc
+git submodule init
+git submodule update</code></pre>Finally, you might need <b>cd</b> into each submodule and 
+run
+
+<pre><code class='javascript'>git checkout</code></pre>
+
+<p>Now make your changes!</p>
+
+<h2>2. Test</h2>
+
+<p>To test FuncUnit, Steal, and jQueryMX combined open 
+<a href='/test.html'>javascriptmvc/test.html</a> in 
+every supported browser and run:</p>
+
+<pre><code class='javascript'>./js test/run.js</code></pre>
+
+<p>To test just the invidual projects, do the following:</p>
+
+<h4>StealJS</h4>
+
+<p>Open <a href='/steal/test/qunit.html'>/steal/test/qunit.html</a> 
+in a browser.</p>
+
+<p>Run:</p>
+
+<pre><code class='javascript'>./js steal/test/run.js</code></pre>
+
+<h4>FuncUnit</h4>
+
+<p>Open <a href='/funcunit/funcunit.html'>/funcunit/funcunit.html</a> 
+and <a href='/funcunit/qunit.html'>/funcunit/qunit.html</a> in every browser.</p>
+
+<p>Run:</p>
+
+<pre><code class='javascript'>funcunit/envjs funcunit/funcunit.html</code></pre>
+
+<h4>jQueryMX</h4>
+
+<p>Open <a href='/jquery/qunit.html'>/jquery/qunit.html</a> 
+in every browser.</p>
+
+<p>Run:</p>
+
+<pre><code class='javascript'>./js jquery/test/run.js</code></pre>
+
+<h2>3. Build</h2>
+
+<p>Coming soon, but most projects have a build.js and so does framework.</p>
+
+<h2>4. Building the Docs</h2>
+
+<p>Run:</p>
+
+<pre><code class='javascript'>js jmvc\scripts\doc.js</code></pre>
+
+<p>If you have problems, you might need to create a <code>jmvc/docs</code> folder.
+Pages like this one are found in <code>jmvc/pages/</code>.</p>
+
+<h2>4. Deploying the Docs</h2>
+
+<p>Run:</p>
+
+<pre><code class='javascript'>ruby scripts\deploy.rb</code></pre>
+
+<p>First you need to add our EC2 private key in the scripts folder, named key.  If you want to 
+deploy, talk to Brian to get access to this key.</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

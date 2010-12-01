@@ -1,0 +1,1 @@
+C({"name": "jQuery.Controller.prototype.options", "type": "attribute", "parent": "jQuery.Controller.prototype", "comment": "<p>Options is automatically merged from this.Class.OPTIONS and the 2nd argument\npassed to a controller.</p>", "children": []})

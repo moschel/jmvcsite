@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>jquery model encapsulate - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+	        	<div class="topCorner"><div>&nbsp;</div></div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner"><div>&nbsp;</div></div>	                
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner"><div>&nbsp;</div></div>
+	<div class="content">
+	    <h1>Service Encapsulation&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner"><div>&nbsp;</div></div>	 	
+</div>
+
+ 
+
+<h1>Service / Ajax Encapsulation</h1>
+
+<p>Models encapsulate your application's raw data.  </p>
+
+<p>The majority of the time, the raw data comes from 
+services your server provides.  For example, 
+if you make a request to:</p>
+
+<pre><code>GET /contacts.json</code></pre>
+
+<p>The server might return something like:</p>
+
+<pre><code>[{
+  'id': 1,
+  'name' : 'Justin Meyer',
+  'birthday': '1982-10-20'
+},
+{
+  'id': 2,
+  'name' : 'Brian Moschel',
+  'birthday': '1983-11-10'
+}]</code></pre>
+
+<p>In most jQuery code, you'll see something like the following to retrieve contacts
+data:</p>
+
+<pre><code class='javascript'>$.get('/contacts.json',
+      {type: 'tasty'}, 
+      successCallback,
+      'json')</code></pre></code></pre>
+
+<p>Instead, model encapsulates (wraps) this request so you call it like:</p>
+
+<pre><code class='javascript'>Contact.findAll({type: 'old'}, successCallback);</code></pre>
+
+<p>And instead of raw data, findAll returns contact instances that let you do things like:</p>
+
+<pre><code class='javascript'>// destroy the contact
+contact.destroy() 
+
+// update the contact
+contact.update({name: "Jeremy"})
+
+// create a contact
+new Contact({name: "Alex"}).save();</code></pre>
+
+<h2>Encapsulation Demo</h2>
+
+<p>The Grid demo shows using two different models with the same widget.</p>
+
+<div class='demo_wrapper' data-demo-src='jquery/model/demo-encapsulate.html'></div>
+
+<h2>How to Encapsulate</h2>
+
+<p>Think of models as a contract for creating, reading, updating, and deleting data. <br />
+By filling out a model, you can pass that model to a widget and the widget will use 
+the model as a proxy for your data.  </p>
+
+<p>The following chart shows the methods most models provide:</p>
+
+<table>
+    <tr>
+        <td>Create</td><td><pre>Contact.create(attrs, success, error</pre></td>
+    </tr>
+    <tr>
+        <td>Read</td><td><pre>Contact.findAll(params,success,error)
+Contact.findOne(params, success, error)</pre></td>
+    </tr>
+    <tr>
+        <td>Update</td><td><pre>Contact.update(id, attrs, success, error)</pre></td>
+    </tr>
+    <tr>
+        <td>Delete</td><td><pre>Contact.destroy(id, success, error)</pre></td>
+    </tr>
+</table>
+
+<p>By filling out these methods, you get the benefits of encapsulation, 
+AND all the other magic Model provides.  Lets see how we might fill out the
+<code>Contact.findAll</code> function:</p>
+
+<pre><code class='javascript'>$.Model.extend('Contact',
+{
+  findAll : function(params, success, error){
+
+    // do the ajax request
+    $.get('/contacts.json',
+      params, 
+      function( json ){ 
+
+        // on success, create new Contact
+        // instances for each contact
+        var wrapped = [];
+
+        for(var i =0; i< json.length;i++){
+          wrapped.push( new Contact(json[i] ) );
+        }
+
+        //call success with the contacts
+        success( wrapped );
+
+      },
+      'json');
+  }
+},
+{
+  // Prototype properties of Contact.
+  // We'll learn about this soon!
+});</code></pre>
+
+<p>Well, that would be annoying to write out every time.  Fortunately, models have
+the wrapMany method which will make it easier:</p>
+
+<pre><code class='javascript'>findAll : function(params, success, error){
+    $.get('/contacts.json',
+      params, 
+      function( json ){ 
+        success(Contact.wrapMany(json));        
+      },
+      'json');
+  }</code></pre>
+
+<p>Model is based off JavaScriptMVC's <code>jQuery.Class</code>. It's callback allows us to pipe
+wrapMany into the success handler and make our code even shorter:</p>
+
+<pre><code class='javascript'>findAll : function(params, success, error){
+    $.get('/contacts.json',
+    params, 
+    this.callback(['wrapMany', success]),
+    'json')
+  }</code></pre>
+
+<p>If we wanted to make a list of contacts, we could do it like:</p>
+
+<pre><code class='javascript'>Contact.findAll({},function(contacts){
+  var html = [];
+  for(var i =0; i < contacts.length; i++){
+    html.push('&lt;li>'+contacts[i].name + '&lt;/li>')
+  }
+  $('#contacts').html( html.join('') );
+});</code></pre>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>
