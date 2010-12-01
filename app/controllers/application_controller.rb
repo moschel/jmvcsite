@@ -2,6 +2,8 @@ require 'zip/zip'
 class ApplicationController < ActionController::Base
   def pluginify
   	# get each file, append
+  	standalone = ""
+  	min = ""
     Zip::ZipOutputStream::open("#{RAILS_ROOT}/tmp/javascriptmvc.zip") { |io|
 	  	params.each do |name, deps|
 	  		deps = deps.split(",")
@@ -37,7 +39,8 @@ class ApplicationController < ActionController::Base
 	  	end
     }
    
-  	send_file "#{RAILS_ROOT}/tmp/javascriptmvc.zip", :type=>"application/zip" 
+   @output = standalone
+  	#send_file "#{RAILS_ROOT}/tmp/javascriptmvc.zip", :type=>"application/zip" 
   end
   
 	def get_file_as_string(filename)
