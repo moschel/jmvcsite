@@ -24,7 +24,7 @@ steal.dev = function () { };
  * Copyright 2010, The Dojo Foundation
  * Released under the MIT, BSD, and GPL Licenses.
  *
- * Date: Thu Oct 14 23:10:06 2010 -0400
+ * Date: Fri Oct 15 00:36:22 2010 -0500
  */
 (function( window, undefined ) {
 
@@ -224,7 +224,7 @@ jQuery.fn = jQuery.prototype = {
 	selector: "",
 
 	// The current version of jQuery being used
-	jquery: "1.4.3",
+	jquery: "1.4.4pre",
 
 	// The default length of a jQuery object is 0
 	length: 0,
@@ -914,7 +914,7 @@ function doScrollCheck() {
 return (window.jQuery = window.$ = jQuery);
 
 })();
-
+(function( jQuery ) {
 
 (function() {
 
@@ -1113,8 +1113,8 @@ jQuery.props = {
 	frameborder: "frameBorder"
 };
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var windowData = {},
 	rbrace = /^(?:\{.*\}|\[.*\])$/;
@@ -1312,8 +1312,8 @@ jQuery.fn.extend({
 	}
 });
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 jQuery.extend({
 	queue: function( elem, type, data ) {
@@ -1406,8 +1406,8 @@ jQuery.fn.extend({
 	}
 });
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var rclass = /[\n\t]/g,
 	rspaces = /\s+/,
@@ -1768,8 +1768,8 @@ jQuery.extend({
 	}
 });
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var rnamespaces = /\.(.*)$/,
 	rformElems = /^(?:textarea|input|select)$/i,
@@ -1780,6 +1780,7 @@ var rnamespaces = /\.(.*)$/,
 		return nm.replace(rescape, "\\$&");
 	},
 	focusCounts = { focusin: 0, focusout: 0 };
+
 
 /*
  * A number of helper functions used for managing events.
@@ -2219,7 +2220,9 @@ jQuery.event = {
 					event.data = handleObj.data;
 					event.handleObj = handleObj;
 	
-					var ret = handleObj.handler.apply( this, args );
+					var oldHandle = event.handled,
+						ret = handleObj.handler.apply( this, args );
+					event.handled = event.handled ===null || handleObj.handler === liveHandler  ? oldHandle : true
 
 					if ( ret !== undefined ) {
 						event.result = ret;
@@ -2892,7 +2895,9 @@ function liveHandler( event ) {
 		event.data = match.handleObj.data;
 		event.handleObj = match.handleObj;
 
+		var oldHandle = event.handled;
 		ret = match.handleObj.origHandler.apply( match.elem, arguments );
+		event.handled = event.handled === null ? oldHandle : true;
 
 		if ( ret === false || event.isPropagationStopped() ) {
 			maxLevel = match.level;
@@ -2948,7 +2953,7 @@ if ( window.attachEvent && !window.addEventListener ) {
 	});
 }
 
-
+})( jQuery );
 /*!
  * Sizzle CSS Selector Engine - v1.0
  *  Copyright 2009, The Dojo Foundation
@@ -3904,16 +3909,10 @@ if ( document.querySelectorAll ) {
 			// Only use querySelectorAll on non-XML documents
 			// (ID selectors don't work in non-HTML documents)
 			if ( !seed && !Sizzle.isXML(context) ) {
-				if ( context.nodeType === 9 ) {
-					try {
-						return makeArray( context.querySelectorAll(query), extra );
-					} catch(qsaError) {}
-
 				// qSA works strangely on Element-rooted queries
 				// We can work around this by specifying an extra ID on the root
 				// and working up from there (Thanks to Andrew Dupont for the technique)
-				// IE 8 doesn't work on object elements
-				} else if ( context.nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
+				if ( context.nodeType === 1 ) {
 					var old = context.id, id = context.id = "__sizzle__";
 
 					try {
@@ -3928,6 +3927,11 @@ if ( document.querySelectorAll ) {
 							context.removeAttribute( "id" );
 						}
 					}
+
+				} else {
+					try {
+						return makeArray( context.querySelectorAll(query), extra );
+					} catch(qsaError) {}
 				}
 			}
 		
@@ -4110,7 +4114,7 @@ jQuery.contains = Sizzle.contains;
 
 
 })();
-
+(function( jQuery ) {
 
 var runtil = /Until$/,
 	rparentsprev = /^(?:parents|prevUntil|prevAll)/,
@@ -4403,8 +4407,8 @@ function winnow( elements, qualifier, keep ) {
 	});
 }
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var rinlinejQuery = / jQuery\d+="(?:\d+|null)"/g,
 	rleadingWhitespace = /^\s+/,
@@ -5002,8 +5006,8 @@ function evalScript( i, elem ) {
 	}
 }
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var ralpha = /alpha\([^)]*\)/i,
 	ropacity = /opacity=([^)]*)/,
@@ -5307,8 +5311,8 @@ if ( jQuery.expr && jQuery.expr.filters ) {
 	};
 }
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var jsc = jQuery.now(),
 	rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
@@ -5546,13 +5550,10 @@ jQuery.extend({
 			s.dataType = "script";
 
 			// Handle JSONP-style loading
+
 			var customJsonp = window[ jsonp ];
 
 			window[ jsonp ] = function( tmp ) {
-				data = tmp;
-				jQuery.handleSuccess( s, xhr, status, data );
-				jQuery.handleComplete( s, xhr, status, data );
-
 				if ( jQuery.isFunction( customJsonp ) ) {
 					customJsonp( tmp );
 
@@ -5564,6 +5565,10 @@ jQuery.extend({
 						delete window[ jsonp ];
 					} catch( jsonpError ) {}
 				}
+
+				data = tmp;
+				jQuery.handleSuccess( s, xhr, status, data );
+				jQuery.handleComplete( s, xhr, status, data );
 				
 				if ( head ) {
 					head.removeChild( script );
@@ -6024,8 +6029,8 @@ if ( window.ActiveXObject ) {
 // Does this browser support XHR requests?
 jQuery.support.ajax = !!jQuery.ajaxSettings.xhr();
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var elemdisplay = {},
 	rfxtypes = /^(?:toggle|show|hide)$/,
@@ -6532,8 +6537,8 @@ function defaultDisplay( nodeName ) {
 	return elemdisplay[ nodeName ];
 }
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 var rtable = /^t(?:able|d|h)$/i,
 	rroot = /^(?:body|html)$/i;
@@ -6725,12 +6730,12 @@ jQuery.offset = {
 			options = options.call( elem, i, curOffset );
 		}
 
-		if (options.top != null) {
-			props.top = (options.top - curOffset.top) + curTop;
-		}
-		if (options.left != null) {
-			props.left = (options.left - curOffset.left) + curLeft;
-		}
+		props = (!curElem.is(":visible") && !curOffset.top && !curOffset.left) || isNaN(curTop) || isNaN(curLeft) ?  
+		{ top : options.top, left: options.left }
+		: {
+			top:  (options.top  - curOffset.top)  + curTop,
+			left: (options.left - curOffset.left) + curLeft
+		};
 		
 		if ( "using" in options ) {
 			options.using.call( elem, props );
@@ -6831,8 +6836,8 @@ function getWindow( elem ) {
 			false;
 }
 
-
-
+})( jQuery );
+(function( jQuery ) {
 
 // Create innerHeight, innerWidth, outerHeight and outerWidth methods
 jQuery.each([ "Height", "Width" ], function( i, name ) {
@@ -6892,7 +6897,7 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 
 });
 
-
+})( jQuery );
 })(window);
 
 /**
@@ -7160,10 +7165,7 @@ RemoteRunner.prototype.continueTest = function(){
     };
 })(jQuery);
 })
-// funcunit/synthetic/synthetic.js
-
-(function($){
-
+(function(){
 	
 	
 var extend = function(d, s) { for (var p in s) d[p] = s[p]; return d;},
@@ -7976,13 +7978,8 @@ if (window.jQuery || (window.FuncUnit && window.FuncUnit.jquery)) {
 
 window.Syn = Syn;
 	
-
-})(true);
-
-// funcunit/synthetic/mouse.js
-
-(function($){
-
+})(jQuery);
+(function(){
 
 var h = Syn.helpers;
 
@@ -8272,13 +8269,8 @@ h.extend(Syn.create,{
 })();
 
 
-
-})(true);
-
-// funcunit/synthetic/browsers.js
-
-(function($){
-
+})(jQuery);
+(function(){
 	Syn.key.browsers = {
 		webkit : {
 			'prevent':
@@ -8428,13 +8420,8 @@ h.extend(Syn.create,{
 		return Syn.mouse.browsers.gecko;
 	})();
 	
-
-})(true);
-
-// funcunit/synthetic/key.js
-
-(function($){
-
+})(jQuery);
+(function(){
 
 var h = Syn.helpers,
 	S = Syn,
@@ -9260,13 +9247,8 @@ h.extend(Syn.init.prototype,
 
 
 	
-
-})(true);
-
-// funcunit/synthetic/drag/drag.js
-
-(function($){
-
+})(jQuery);
+(function(){
 	// document body has to exists for this test
 
 	(function(){
@@ -9540,10 +9522,7 @@ Syn.helpers.extend(Syn.init.prototype,{
 	}
 })
 
-
-})(true);
-
-
+})(jQuery)
 steal.then(function(){
 
 (function($){
