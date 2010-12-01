@@ -49,9 +49,9 @@ class ApplicationController < ActionController::Base
 	   # zipfile.file.open("mydir/second.txt", "w") { |f| f.puts "Hello again" }
 	  #}
   	#send_file "#{RAILS_ROOT}/tmp/my.zip", :type=>"application/zip"
-	  write_file_as_string "#{RAILS_ROOT}/tmp/hi.txt", "hi world"
-	  get_file_as_string "#{RAILS_ROOT}/tmp/hi.txt"
-  	  send_file "#{RAILS_ROOT}/tmp/hi.txt"
+	  write_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", "hi world"
+	  txt = get_file_as_string "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}"
+  	  send_data txt, :filename => "hi.txt"
 	  
   end
   
