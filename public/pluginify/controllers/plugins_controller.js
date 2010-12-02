@@ -30,9 +30,7 @@ $.Controller.extend('Pluginify.Controllers.Plugins',
  'form submit': function(el, ev){
  	ev.preventDefault();
 	// perform request and download
-	window.location.href = '/pluginify?'+jQuery.param({
-		plugins: this.dependencies
-	});
+	window.location.href = '/pluginify?'+jQuery.param(el.formParams());
  },
  /**
   * Push a list of plugins to the current list.  If there's a duplicate, 

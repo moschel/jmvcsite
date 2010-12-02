@@ -1,20 +1,49 @@
 require 'zip/zip'
 require 'zip/zipfilesystem'
+require 'json'
+
+  class File
+	def self.get_contents(filename)
+	  data = ''
+	  f = File.open(filename, "r") 
+	  f.each_line do |line|
+	    data += line
+	  end
+	  f.close
+	  return data
+	end
+	
+	def self.write_contents(path, contents)
+		File.open(path, 'w') {|f| f.write(contents) }
+	end
+  end
+ 
+  
 class ApplicationController < ActionController::Base
+  # get dependencies.json and parse it
+  @@dependencies = JSON.parse(File.get_contents("public/jquery/dist/standalone/dependencies.json"))	
+
   def pluginify
+  	@plugins = []
+  
+  	# go through the plugins, find the ordered list of dependencies
+  	for plugin in params[:plugins]
+		push_plugins(get_dependencies(plugin));
+	end
+  	
   	# get each file, append
     Zip::ZipOutputStream::open("#{RAILS_ROOT}/tmp/myfile_#{Process.pid}") { |io|
 	  	standalone_file = ""
 	  	min_file = ""
-	  	for plugin in params[:plugins]
+	  	for plugin in @plugins
+	  		puts "PLUGIN: "+plugin
 	  		standalone_name = plugin.gsub(/\/\w+\.js/, '.js').gsub(/\//, '.')
-	  		puts "name: "+standalone_name+", end"
 	  		standalone_path = 'public/jquery/dist/standalone/'+standalone_name
-	  		standalone_contents = get_file_as_string standalone_path
+	  		standalone_contents = File.get_contents standalone_path
 	  		
 	  		min_name = standalone_name.gsub(/\.js$/, '.min.js')
 	  		min_path = 'public/jquery/dist/standalone/'+min_name
-	  		min_contents = get_file_as_string min_path
+	  		min_contents = File.get_contents min_path
 	  		
   			standalone_file += "\n//"+standalone_name+"\n\n"
   			standalone_file += standalone_contents+"\n"
@@ -38,17 +67,33 @@ class ApplicationController < ActionController::Base
   		:filename => "jquerymx-3.0.0.custom.zip", :type=>"application/zip"
   end
   
-	def get_file_as_string(filename)
-	  data = ''
-	  f = File.open(filename, "r") 
-	  f.each_line do |line|
-	    data += line
-	  end
-	  f.close
-	  return data
+  private
+  
+  def push_plugins(dependencies)
+ 	for dep in dependencies
+		if(@plugins.include? dep)
+			@plugins.delete(dep)
+		end
+		@plugins.push(dep);
 	end
+  end
+  
+  def get_dependencies(name)
+ 	dependencies = @@dependencies[name]
+	total_dependencies = []
 	
-	def write_file_as_string(path, contents)
-		File.open(path, 'w') {|f| f.write(contents) }
+	if(!dependencies.length || 
+		(dependencies.length == 1 && dependencies[0] == "jquery/jquery.js"))
+		return [name]
 	end
+ 	for dep in dependencies
+		lower_dependencies = get_dependencies(dep);
+		for lower_dep in lower_dependencies
+			# TODO if you find a duplicate, remove the other one first
+			total_dependencies.push(lower_dep)
+		end
+	end
+	total_dependencies.push(name)
+	return total_dependencies
+  end
 end
