@@ -1,7 +1,4 @@
-// jquery/model/list/list.js
-
 (function($){
-
 
 var add = function(data, inst){
 		var id = inst.Class.id;
@@ -159,7 +156,7 @@ $.Class.extend("jQuery.Model.List",
 				(matches = args[i].className.match(test) )){
 				val = this._data[matches[1]]
 			}else{
-				val =  this._data[typeof args[i] == 'string' ? args[i] : args[i][idName] ]
+				val =  this._data[typeof args[i] == 'string' || typeof args[i] == 'number'? args[i] : args[i][idName] ]
 			}
 			val && list.push(val)
 		}
@@ -192,7 +189,7 @@ $.Class.extend("jQuery.Model.List",
 				var id = (args[a].nodeName && 
 							(matches = args[a].className.match(test) ) &&
 							matches[1]) || 
-							( typeof args[a] == 'string' ? 
+							( typeof args[a] == 'string' || typeof args[a] == 'number' ? 
 								args[a] :
 								args[a][idName] );
 				if(inst[idName] == id){
@@ -285,6 +282,4 @@ $.each([
 })
 
 
-
-})(true);
-
+})(jQuery)

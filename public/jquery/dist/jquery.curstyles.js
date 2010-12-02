@@ -1,7 +1,4 @@
-// jquery/dom/cur_styles/cur_styles.js
-
 (function($){
-
 
 var getComputedStyle = document.defaultView && document.defaultView.getComputedStyle,
 	rupper = /([A-Z])/g,
@@ -120,6 +117,4 @@ curStyles = function(){
 	return $.curStyles(this[0], $.makeArray(arguments))
 }
 
-
-})(true);
-
+})(jQuery)

@@ -1,1 +1,0 @@
-C({"name": "jQuery.Drag.prototype.location", "type": "attribute", "parent": "jQuery.Drag.prototype", "comment": "<p>The location of where the element should be in the page.  This \ntakes into account the start position of the cursor on the element.</p>", "children": []})

@@ -1,7 +1,4 @@
-// jquery/lang/json/json.js
-
-(function($){
-
+(function(){
 (function($) {
     /** jQuery.toJSON( json-serializble )
         Converts the given argument into a JSON respresentation.
@@ -186,13 +183,8 @@
         '\\': '\\\\'
     };
 })(jQuery);
-
-})(true);
-
-// jquery/dom/cookie/cookie.js
-
-(function($){
-
+})(jQuery);
+(function() {
     // break
     /**
      * @function jQuery.cookie
@@ -310,13 +302,8 @@
         }
     };
 
-
-})(true);
-
-// jquery/model/list/local/local.js
-
+})(jQuery);
 (function($){
-
 /**
  * @plugin jquery/model/list/local
  * @download jquery/dist/jquery.model.list.local.js
@@ -355,6 +342,4 @@ $.Model.List.extend("jQuery.Model.List.Local",
 	
 });
 	
-
-})(true);
-
+})(jQuery)

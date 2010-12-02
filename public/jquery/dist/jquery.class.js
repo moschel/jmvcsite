@@ -1,7 +1,4 @@
-// jquery/class/class.js
-
-(function($){
-
+(function( $ ) {
 
 	// if we are initializing a new class
 	var initializing = false,
@@ -278,7 +275,9 @@
 	 */
 
 	jQuery.Class = function() {
-		if ( arguments.length ) this.extend.apply(this, arguments)
+		if (arguments.length) {
+			jQuery.Class.extend.apply(jQuery.Class, arguments);
+		}
 	};
 
 	/* @Static*/
@@ -348,10 +347,11 @@
 			}
 
 			self = this;
-
+			
 			return function class_cb() {
 				var cur = args.concat(jQuery.makeArray(arguments)),
-					isString, length = funcs.length,
+					isString, 
+					length = funcs.length,
 					f = 0,
 					func;
 
@@ -621,6 +621,4 @@
 	callback = jQuery.Class.callback;
 
 
-
-})(true);
-
+})(jQuery)

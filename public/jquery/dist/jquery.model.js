@@ -1,7 +1,4 @@
-// jquery/class/class.js
-
-(function($){
-
+(function( $ ) {
 
 	// if we are initializing a new class
 	var initializing = false,
@@ -278,7 +275,9 @@
 	 */
 
 	jQuery.Class = function() {
-		if ( arguments.length ) this.extend.apply(this, arguments)
+		if (arguments.length) {
+			jQuery.Class.extend.apply(jQuery.Class, arguments);
+		}
 	};
 
 	/* @Static*/
@@ -348,10 +347,11 @@
 			}
 
 			self = this;
-
+			
 			return function class_cb() {
 				var cur = args.concat(jQuery.makeArray(arguments)),
-					isString, length = funcs.length,
+					isString, 
+					length = funcs.length,
 					f = 0,
 					func;
 
@@ -621,13 +621,8 @@
 	callback = jQuery.Class.callback;
 
 
-
-})(true);
-
-// jquery/lang/lang.js
-
-(function($){
-
+})(jQuery);
+(function( $ ) {
 	// Several of the methods in this plugin use code adapated from Prototype
 	//  Prototype JavaScript framework, version 1.6.0.1
 	//  (c) 2005-2007 Sam Stephenson
@@ -636,7 +631,22 @@
 		colons: /::/,
 		words: /([A-Z]+)([A-Z][a-z])/g,
 		lowerUpper: /([a-z\d])([A-Z])/g,
-		dash: /([a-z\d])([A-Z])/g
+		dash: /([a-z\d])([A-Z])/g,
+		replacer: /\{([^\}]+)\}/g
+	},
+	getObject = function( objectName, current, remove) {
+		var current = current || window,
+			parts = objectName ? objectName.split(/\./) : [],
+			ret,
+			i = 0;
+		for (; i < parts.length-1 && current; i++ ) {
+			current = current[parts[i]]
+		}
+		ret = current[parts[i]];
+		if(remove){
+			delete current[parts[i]];
+		}
+		return ret;
 	};
 
 	/** 
@@ -732,21 +742,28 @@
 		 */
 		underscore: function( s ) {
 			return s.replace(regs.colons, '/').replace(regs.words, '$1_$2').replace(regs.lowerUpper, '$1_$2').replace(regs.dash, '_').toLowerCase();
+		},
+		/**
+		 * Returns a string with {param} replaced with parameters
+		 * from data.
+		 *     $.String.sub("foo {bar}",{bar: "far"})
+		 *     //-> "foo far"
+		 * @param {String} s
+		 * @param {Object} data
+		 */
+		sub : function( s, data, remove ){
+			return s.replace(regs.replacer, function( whole, inside ) {
+				//convert inside to type
+				return getObject(inside, data, remove).toString(); //gets the value in options
+			})
 		}
 	});
 
-
-})(true);
-
-// jquery/model/model.js
-
-(function($){
-
-	//a cache for attribute capitalization ... slowest part of init.
-	var underscore = $.String.underscore,
-		classize = $.String.classize;
-
+})(jQuery);
+(function() {
+	
 	/**
+	 * @class jQuery.Model
 	 * @tag core
 	 * @download jquery/dist/jquery.model.js
 	 * @test jquery/model/qunit.html
@@ -903,15 +920,160 @@
 	 * 
 	 * You can validate your model's attributes with another plugin.  See [validation].
 	 */
+	
+	//helper stuff for later.
+	var underscore = $.String.underscore,
+		classize = $.String.classize,
+		ajax = function(str, attrs, success, error, fixture, type){
+			attrs = $.extend({},attrs)
+			var url = $.String.sub(str, attrs, true)
+			$.ajax({
+				url : url,
+				data : attrs,
+				success : success,
+				error: error,
+				type : type || "post",
+				dataType : "json",
+				fixture: fixture
+			});
+		},
+		fixture = function(){
+			return "//"+$.String.underscore( this.fullName )
+						.replace(/\.models\..*/,"")
+						.replace(/\./g,"/")+"/fixtures/"+$.String.underscore( this.shortName )
+		},
+		addId = function(attrs, id){
+			attrs = attrs || {};
+			if(attrs[this.id]){
+				attrs["new"+$.String.capitalize(this.id)] = attrs[this.id];
+				delete attrs[this.id];
+			}
+			attrs[this.id] = id;
+			return attrs;
+		},
+		// methods that we'll weave into model if provided
+		ajaxMethods = 
+		/** 
+	     * @Static
+	     */
+		{
+
+		/**
+		 * Create is used to create a model instance on the server.  By implementing 
+		 * create along with the rest of the [jquery.model.services service api], your models provide an abstract
+		 * API for services.  
+		 * 
+		 * Create is called by save to create a new instance.  If you want to be able to call save on an instance
+		 * you have to implement create.
+		 * 
+		 * The easist way to implement create is to just give it the url to post data to:
+		 * 
+		 *     $.Model("Recipe",{
+		 *       create: "/recipes"
+		 *     },{})
+		 *     
+		 * This lets you create a recipe like:
+		 *  
+		 *     new Recipe({name: "hot dog"}).save(function(){
+		 *       this.name //this is the new recipe
+		 *     }).save(callback)
+		 *  
+		 * You can also implement create by yourself.  You just need to call success back with
+		 * an object that contains the id of the new instance and any other properties that should be
+		 * set on the instance.
+		 *  
+		 * For example, the following code makes a request 
+		 * to '/recipes.json?name=hot+dog' and gets back
+		 * something that looks like:
+		 *  
+		 *     { 
+		 *       id: 5,
+		 *       createdAt: 2234234329
+		 *     }
+		 * 
+		 * The code looks like:
+		 * 
+		 *     $.Model("Recipe", {
+		 *       create : function(attrs, success, error){
+		 *         $.post("/recipes.json",attrs, success,"json");
+		 *       }
+		 *     },{})
+		 * 
+		 * ## API
+		 * 
+		 * @param {Object} attrs Attributes on the model instance
+		 * @param {Function} success the callback function, it must be called with an object 
+		 * that has the id of the new instance and any other attributes the service needs to add.
+		 * @param {Function} error a function to callback if something goes wrong.  
+		 */
+		create: function(str  ) {
+			return function(attrs, success, error){
+				ajax(str, attrs, success, error, "-restCreate")
+			};
+		},
+		/**
+		 * Implement this function!
+		 * Update is called by save to update an instance.  If you want to be able to call save on an instance
+		 * you have to implement update.
+		 */
+		update: function( str ) {
+			return function(id, attrs, success, error){
+				ajax(str, addId.call(this,attrs, id), success, error, "-restUpdate")
+			}
+		},
+		/**
+		 * Implement this function!
+		 * Destroy is called by destroy to remove an instance.  If you want to be able to call destroy on an instance
+		 * you have to implement update.
+		 * @param {String|Number} id the id of the instance you want destroyed
+		 */
+		destroy: function( str ) {
+			return function( id, success, error ) {
+				var attrs = {};
+				attrs[this.id] = id;
+				ajax(str, attrs, success, error, "-restDestroy")
+			}
+		},
+		/**
+		 * Implement this function!
+		 * @param {Object} params
+		 * @param {Function} success
+		 * @param {Function} error
+		 */
+		findAll: function( str ) {
+			return function(params, success, error){
+				ajax(str, 
+					params, 
+					this.callback(['wrapMany',success]), 
+					error, 
+					fixture.call(this)+"s.json",
+					"get");
+			};
+		},
+		/**
+		 * Implement this function!
+		 * @param {Object} params
+		 * @param {Function} success
+		 * @param {Function} error
+		 */
+		findOne: function( str ) {
+			return function(params, success, error){
+				ajax(str, 
+					params, 
+					this.callback(['wrap',success]), 
+					error, 
+					fixture.call(this)+".json",
+					"get");
+			};
+		}
+	};
 
 
-	jQuery.Class.extend("jQuery.Model",
-	/** 
-	 * @Static
-	 */
-	{
-		setup: function( superClass ) {
 
+
+
+	jQuery.Class.extend("jQuery.Model",	{
+		setup: function( superClass , stat, proto) {
 			//we do not inherit attributes (or associations)
 			if (!this.attributes || superClass.attributes === this.attributes ) {
 				this.attributes = {};
@@ -942,7 +1104,12 @@
 			if ( this.listType ) {
 				this.list = new this.listType([]);
 			}
-
+			
+			for(var name in ajaxMethods){
+				if(typeof this[name] === 'string'){
+					this[name] = ajaxMethods[name](this[name]);
+				}
+			}
 		},
 		/**
 		 * @attribute attributes
@@ -1056,7 +1223,7 @@
 				raw = arr ? instancesRawData : instancesRawData.data,
 				length = raw.length,
 				i = 0;
-
+			
 			res._use_call = true; //so we don't call next function with all of these
 			for (; i < length; i++ ) {
 				res.push(this.wrap(raw[i]));
@@ -1170,49 +1337,6 @@
 			"boolean": function( val ) {
 				return Boolean(val);
 			}
-		},
-		/**
-		 * Implement this function!
-		 * Create is called by save to create a new instance.  If you want to be able to call save on an instance
-		 * you have to implement create.
-		 */
-		create: function( attrs, success, error ) {
-			throw "Model: Implement Create";
-		},
-		/**
-		 * Implement this function!
-		 * Update is called by save to update an instance.  If you want to be able to call save on an instance
-		 * you have to implement update.
-		 */
-		update: function( id, attrs, success, error ) {
-			throw "Model: Implement " + this.fullName + "'s \"update\"!";
-		},
-		/**
-		 * Implement this function!
-		 * Destroy is called by destroy to remove an instance.  If you want to be able to call destroy on an instance
-		 * you have to implement update.
-		 * @param {String|Number} id the id of the instance you want destroyed
-		 */
-		destroy: function( id, success, error ) {
-			throw "Model: Implement " + this.fullName + "'s \"destroy\"!";
-		},
-		/**
-		 * Implement this function!
-		 * @param {Object} params
-		 * @param {Function} success
-		 * @param {Function} error
-		 */
-		findAll: function( params, success, error ) {
-
-		},
-		/**
-		 * Implement this function!
-		 * @param {Object} params
-		 * @param {Function} success
-		 * @param {Function} error
-		 */
-		findOne: function( params, success, error ) {
-
 		}
 	},
 	/**
@@ -1566,10 +1690,15 @@
 			return attributes;
 		},
 		/**
-		 * Returns if the instance is a new object
+		 * Returns if the instance is a new object.  This is essentially if the
+		 * id is null or undefined.
+		 * 
+		 *     new Recipe({id: 1}).isNew() //-> false
+		 * @return {Boolean} false if an id is set, true if otherwise.
 		 */
 		isNew: function() {
-			return (this[this.Class.id] === undefined); //if null or undefined
+			var id = this[this.Class.id];
+			return (id === undefined || id === null); //if null or undefined
 		},
 		/**
 		 * Saves the instance if there are no errors.  
@@ -1747,6 +1876,20 @@
 		}
 
 	};
-
-})(true);
-
+	/**
+	 * @page jquery.model.services Service APIs
+	 * @parent jQuery.Model
+	 * 
+	 * Models provide an abstract API for connecting to your Services.  By implementing static:
+	 * 
+	 *  - [jQuery.Model.static.findAll] 
+	 *  - [jQuery.Model.static.findOne] 
+	 *  - [jQuery.Model.static.create] 
+	 *  - [jQuery.Model.static.update] 
+	 *  - [jQuery.Model.static.destroy]
+	 *  
+	 * You can pass a model class to widgets and the widgets can interface with the
+	 * model.  This prevents the need for every widget to be configured with the ajax functionality
+	 * necessary to make a request to your services.
+	 */
+})(jQuery)

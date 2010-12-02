@@ -1,1 +1,0 @@
-C({"name": "jQuery.fn.innerWidth", "type": "function", "parent": "jQuery.fn", "comment": "<p>Lets you set the inner height of an object</p>", "parents": ["dimensions"], "params": {"height": {"order": 0, "description": "", "name": "height", "type": "Number", "optional": true}}, "children": []})

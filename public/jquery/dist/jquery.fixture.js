@@ -1,7 +1,4 @@
-// jquery/dom/fixture/fixture.js
-
-(function($){
-
+(function( $ ) {
 
 	var ajax = $.ajax;
 
@@ -516,6 +513,4 @@
 			fixture: fixture
 		});
 	};
-
-})(true);
-
+})(jQuery)

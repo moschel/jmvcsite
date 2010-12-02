@@ -1,7 +1,4 @@
-// jquery/dom/form_params/form_params.js
-
-(function($){
-
+(function( $ ) {
 	var radioCheck = /radio|checkbox/i,
 		keyBreaker = /[^\[\]]+/g,
 		numberMatcher = /^[\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?$/;
@@ -108,6 +105,4 @@
 		}
 	});
 
-
-})(true);
-
+})(jQuery)

@@ -53,10 +53,6 @@ test('Envjs.uri', function(){
 
     uri = Envjs.uri('file:///foo/bar/');
     equals(uri, 'file:///foo/bar/', 'File, absolute, with ending "/"');
-	
-	// handle windows style file paths, firefox will convert this to a file: url
-	uri = Envjs.uri('C:\\foo\\bar\\index.html');
-    equals(uri, 'file:///C:/foo/bar/index.html', 'File, absolute, converted slashes');
 
     uri = Envjs.uri('http://foo.com');
     equals(uri, 'http://foo.com/', 'http, absolute, without path, without ending "/"');

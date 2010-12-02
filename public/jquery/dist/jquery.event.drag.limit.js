@@ -1,7 +1,4 @@
-// jquery/event/drag/limit/limit.js
-
 (function($){
-
 	
 	
 	$.Drag.prototype.
@@ -52,6 +49,4 @@
 		oldPosition.call(this, offsetPositionv)
 	}
 	
-
-})(true);
-
+})(jQuery)

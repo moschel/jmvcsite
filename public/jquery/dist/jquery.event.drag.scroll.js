@@ -1,7 +1,4 @@
-// jquery/event/drag/scroll/scroll.js
-
-(function($){
- //needs drop to determine if respondable
+(function($){ //needs drop to determine if respondable
 
 /**
  * @add jQuery.Drag.prototype
@@ -120,6 +117,4 @@ $.extend($.Scrollable.prototype,{
 	}
 })
 
-
-})(true);
-
+})(jQuery)

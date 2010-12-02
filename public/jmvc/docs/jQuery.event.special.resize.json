@@ -1,1 +1,0 @@
-C({"name": "jQuery.event.special.resize", "type": "attribute", "parent": "jQuery.event.special", "comment": "<p>Normalizes resize events cross browser.</p>\n\n<p>This only allows native resize events on the window and prevents them from being called \nindefinitely.\n</p>", "parents": ["specialevents"], "children": []})

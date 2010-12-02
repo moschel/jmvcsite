@@ -1,1 +1,0 @@
-C({"name": "Jaml.Node.isSelfClosing", "params": {}, "ret": {"description": "<p>True if this tag should close itself</p>", "type": "Boolean"}, "type": "function", "parent": "Jaml.Node", "comment": "<p>Returns true if this tag should close itself (e.g. no </tag> element)</p>", "children": []})

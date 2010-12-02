@@ -1,1 +1,0 @@
-C({"name": "jQuery.Model.List.prototype.remove", "params": {"args": {"description": "", "type": "Object", "optional": false, "order": 0, "name": "args"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "jQuery.Model.List.prototype", "comment": "<p>Removes instances from this list by id or by an\nelement.</p>", "children": []})

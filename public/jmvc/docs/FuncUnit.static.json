@@ -1,1 +1,0 @@
-C({"name": "FuncUnit.static", "type": "static", "parent": "FuncUnit", "comment": "", "children": ["FuncUnit.static.href", "FuncUnit.static.jmvcRoot", "FuncUnit.static.open", "FuncUnit.static.getAbsolutePath", "FuncUnit.static.browsers", "FuncUnit.static.window", "FuncUnit.static.add", "FuncUnit.static.wait", "FuncUnit.static.repeat", "FuncUnit.static.convert"]})

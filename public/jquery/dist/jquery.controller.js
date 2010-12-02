@@ -1,7 +1,4 @@
-// jquery/class/class.js
-
-(function($){
-
+(function( $ ) {
 
 	// if we are initializing a new class
 	var initializing = false,
@@ -278,7 +275,9 @@
 	 */
 
 	jQuery.Class = function() {
-		if ( arguments.length ) this.extend.apply(this, arguments)
+		if (arguments.length) {
+			jQuery.Class.extend.apply(jQuery.Class, arguments);
+		}
 	};
 
 	/* @Static*/
@@ -348,10 +347,11 @@
 			}
 
 			self = this;
-
+			
 			return function class_cb() {
 				var cur = args.concat(jQuery.makeArray(arguments)),
-					isString, length = funcs.length,
+					isString, 
+					length = funcs.length,
 					f = 0,
 					func;
 
@@ -621,13 +621,8 @@
 	callback = jQuery.Class.callback;
 
 
-
-})(true);
-
-// jquery/lang/lang.js
-
-(function($){
-
+})(jQuery);
+(function( $ ) {
 	// Several of the methods in this plugin use code adapated from Prototype
 	//  Prototype JavaScript framework, version 1.6.0.1
 	//  (c) 2005-2007 Sam Stephenson
@@ -636,7 +631,22 @@
 		colons: /::/,
 		words: /([A-Z]+)([A-Z][a-z])/g,
 		lowerUpper: /([a-z\d])([A-Z])/g,
-		dash: /([a-z\d])([A-Z])/g
+		dash: /([a-z\d])([A-Z])/g,
+		replacer: /\{([^\}]+)\}/g
+	},
+	getObject = function( objectName, current, remove) {
+		var current = current || window,
+			parts = objectName ? objectName.split(/\./) : [],
+			ret,
+			i = 0;
+		for (; i < parts.length-1 && current; i++ ) {
+			current = current[parts[i]]
+		}
+		ret = current[parts[i]];
+		if(remove){
+			delete current[parts[i]];
+		}
+		return ret;
 	};
 
 	/** 
@@ -732,16 +742,25 @@
 		 */
 		underscore: function( s ) {
 			return s.replace(regs.colons, '/').replace(regs.words, '$1_$2').replace(regs.lowerUpper, '$1_$2').replace(regs.dash, '_').toLowerCase();
+		},
+		/**
+		 * Returns a string with {param} replaced with parameters
+		 * from data.
+		 *     $.String.sub("foo {bar}",{bar: "far"})
+		 *     //-> "foo far"
+		 * @param {String} s
+		 * @param {Object} data
+		 */
+		sub : function( s, data, remove ){
+			return s.replace(regs.replacer, function( whole, inside ) {
+				//convert inside to type
+				return getObject(inside, data, remove).toString(); //gets the value in options
+			})
 		}
 	});
 
-
-})(true);
-
-// jquery/event/destroyed/destroyed.js
-
-(function($){
-
+})(jQuery);
+(function( $ ) {
 	/**
 	 * @attribute destroyed
 	 * @parent specialevents
@@ -777,13 +796,8 @@
 		oldClean(elems);
 	};
 
-
-})(true);
-
-// jquery/controller/controller.js
-
-(function($){
-
+})(jQuery);
+(function( $ ) {
 
 	// ------- helpers  ------
 	// Binds an element, returns a function that unbinds
@@ -1249,10 +1263,7 @@
 			if (!options && parameterReplacer.test(methodName) ) {
 				return null;
 			}
-			var convertedName = options ? methodName.replace(parameterReplacer, function( whole, inside ) {
-				//convert inside to type
-				return $.Class.getObject(inside, options).toString(); //gets the value in options
-			}) : methodName,
+			var convertedName = options ? $.String.sub(methodName, options) : methodName,
 				parts = convertedName.match(breaker),
 				event = parts[2],
 				processor = this.processors[event] || basicProcessor;
@@ -1576,6 +1587,4 @@
 		return this.controllers.apply(this, arguments)[0];
 	};
 
-
-})(true);
-
+})(jQuery)

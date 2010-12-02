@@ -1,7 +1,4 @@
-// jquery/dom/within/within.js
-
 (function($){
-
    var withinBox = function(x, y, left, top, width, height ){
         return (y >= top &&
                 y <  top + height &&
@@ -64,6 +61,4 @@ $.fn.withinBox = function(left, top, width, height, cache){
     return this.pushStack( jQuery.unique( ret ), "withinBox", jQuery.makeArray(arguments).join(",") );
 }
     
-
-})(true);
-
+})(jQuery)

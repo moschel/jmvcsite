@@ -1,1 +1,0 @@
-C({"name": "jQuery.Vector.prototype.x", "type": "attribute", "parent": "jQuery.Vector.prototype", "comment": "<p>Returns the 2nd value of the vector</p>", "ret": {"description": "", "type": "Number"}, "children": []})

@@ -1,7 +1,4 @@
-// jquery/lang/openajax/openajax.js
-
-(function($){
-
+(function(){
 // prevent re-definition of the OpenAjax object
 if(!window["OpenAjax"]){
 	/**
@@ -182,13 +179,8 @@ if(!window["OpenAjax"]){
 
 }
 OpenAjax.hub.registerLibrary("JavaScriptMVC", "http://JavaScriptMVC.com", "1.5", {});
-
-})(true);
-
-// jquery/controller/subscribe/subscribe.js
-
-(function($){
-
+})(jQuery);
+(function() {
 
 	/**
 	 * Adds open ajax subscribing to controllers.
@@ -213,6 +205,4 @@ OpenAjax.hub.registerLibrary("JavaScriptMVC", "http://JavaScriptMVC.com", "1.5",
 	jQuery.Controller.prototype.publish = function() {
 		OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
 	};
-
-})(true);
-
+})(jQuery)

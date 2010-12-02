@@ -1,7 +1,6 @@
 load('steal/rhino/env.js');
 Envjs('datatable/qunit.html', {
-	scriptTypes : {"text/javascript" : true,"text/envjs" : true, "": true}, 
+	scriptTypes : {"text/javascript" : true,"text/envjs" : true}, 
 	fireLoad: true, 
-	logLevel: 2,
-	dontPrintUserAgent: true
+	logLevel: 2
 });

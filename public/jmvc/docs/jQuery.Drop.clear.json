@@ -1,1 +1,0 @@
-C({"name": "jQuery.Drop.clear", "params": {}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "jQuery.Drop", "comment": "<p>Called after dragging has stopped.</p>", "hide": true, "children": []})

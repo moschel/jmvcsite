@@ -1,1 +1,0 @@
-C({"name": "DocumentJS.types.attribute.static", "type": "static", "parent": "DocumentJS.types.attribute", "comment": "", "children": ["DocumentJS.types.attribute.static.codeMatch", "DocumentJS.types.attribute.static.code", "DocumentJS.types.attribute.static.parent"]})

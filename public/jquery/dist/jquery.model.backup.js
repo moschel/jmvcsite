@@ -1,7 +1,4 @@
-// jquery/model/backup/backup.js
-
-(function($){
-
+(function(){
 
 /**
 @page jquery.model.backup Backup / Restore
@@ -139,6 +136,4 @@ See this in action:
 		}
 	   
    })
-
-})(true);
-
+})(jQuery)

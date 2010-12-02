@@ -1,7 +1,4 @@
-// jquery/dom/compare/compare.js
-
 (function($){
-
 /**
  * @function compare
  * @parent dom
@@ -64,6 +61,4 @@ jQuery.fn.compare = function(b){ //usually
 	return number;
 }
 
-
-})(true);
-
+})(jQuery)

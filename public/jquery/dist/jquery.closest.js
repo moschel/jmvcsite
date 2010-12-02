@@ -1,7 +1,4 @@
-// jquery/dom/closest/closest.js
-
-(function($){
-
+(function(){
 	/**
 	 * @function closest
 	 * @parent dom
@@ -44,6 +41,4 @@
 		}
 		return res;
 	}
-
-})(true);
-
+})(jQuery)

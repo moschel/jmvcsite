@@ -1,7 +1,4 @@
-// jquery/event/livehack/livehack.js
-
-(function($){
-
+(function(){
 
 	var event = jQuery.event,
 		
@@ -167,13 +164,8 @@
 			};
 		});
 	}
-
-})(true);
-
-// jquery/event/hover/hover.js
-
+})(jQuery);
 (function($){
-
 /**
  * @class jQuery.Hover
  * @plugin jquery/event/hover
@@ -391,6 +383,4 @@ event.setupHelper( [
 		
 
 	
-
-})(true);
-
+})(jQuery)

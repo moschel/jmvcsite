@@ -1,7 +1,4 @@
-// jquery/dom/within/within.js
-
 (function($){
-
    var withinBox = function(x, y, left, top, width, height ){
         return (y >= top &&
                 y <  top + height &&
@@ -64,13 +61,8 @@ $.fn.withinBox = function(left, top, width, height, cache){
     return this.pushStack( jQuery.unique( ret ), "withinBox", jQuery.makeArray(arguments).join(",") );
 }
     
-
-})(true);
-
-// jquery/dom/compare/compare.js
-
+})(jQuery);
 (function($){
-
 /**
  * @function compare
  * @parent dom
@@ -133,13 +125,8 @@ jQuery.fn.compare = function(b){ //usually
 	return number;
 }
 
-
-})(true);
-
-// jquery/event/drop/drop.js
-
+})(jQuery);
 (function($){
-
 	var event = $.event, 
 		callHanders = function(){
 			
@@ -439,6 +426,4 @@ jQuery.fn.compare = function(b){ //usually
 			this._canceled = true;
 		}
 	} )
-
-})(true);
-
+})(jQuery)

@@ -1,7 +1,4 @@
-// jquery/model/validations/validations.js
-
 (function($){
-
 /**
 @page jquery.model.validations Validations
 @plugin jquery/mode/validations
@@ -178,6 +175,4 @@ $.extend($.Model, {
 
 
 	
-
-})(true);
-
+})(jQuery)

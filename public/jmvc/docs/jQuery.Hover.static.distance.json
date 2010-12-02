@@ -1,1 +1,0 @@
-C({"name": "jQuery.Hover.static.distance", "type": "attribute", "parent": "jQuery.Hover.static", "comment": "<p>A hover is activated if it moves less than this distance in delay time.\nSet this value as a global default.</p>", "children": []})

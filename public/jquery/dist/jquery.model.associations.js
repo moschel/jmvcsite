@@ -1,7 +1,4 @@
-// jquery/model/associations/associations.js
-
 (function($){
-
 /**
 @page jquery.model.associations Associations
 @parent jQuery.Model
@@ -190,6 +187,4 @@ and [jQuery.Model.static.belongsTo hasMany] methods.
 
 
 
-
-})(true);
-
+})(jQuery)
