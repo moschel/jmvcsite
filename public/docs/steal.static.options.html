@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>steal options - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>steal.static.options&nbsp;
+	    	<span class='attribute type'><span class="typeEnd">attribute</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+ 
+<p>Options that deal with steal</p>
+
+<table class='options'>
+<tr>
+    <th>Option</th><th>Default</th><th>Description</th>
+</tr>
+<tr><td>env</td><td>development</td><td>Which environment is currently running</td></tr>
+<tr><td>encoding</td><td>utf-8</td><td>What encoding to use for script loading</td></tr>
+<tr><td>cacheInclude</td><td>true</td><td>true if you want to let browser determine if it should cache script; false will always load script</td></tr>
+
+<tr><td>done</td><td>null</td><td>If a function is present, calls function when all steals have been loaded</td></tr>
+<tr><td>documentLocation</td><td>null</td><td>If present, ajax request will reference this instead of the current window location.  
+Set this in run_unit, to force unit tests to use a real server for ajax requests. </td></tr>
+<tr><td>logLevel</td><td>0</td><td>0 - Log everything<br/>1 - Log Warnings<br/>2 - Log Nothing</td></tr>
+<tr><td>startFile</td><td>null</td><td>This is the first file to load.  It is typically determined from the first script option parameter 
+in the inclue script. </td></tr>
+</table>
+
+<ul>
+   <li><code>steal.options.startFile</code> - the first file steal loads.  This file
+   loads all other scripts needed by your application.</li>
+   <li><code>steal.options.env</code> - the environment (development or production)
+    that determines if steal loads your all your script files or a single
+    compressed file.
+   </li>
+</ul>
+
+<p><code>steal.options</code> can be configured by:</p>
+<ul>
+   <li>The steal.js script tag in your page (most common pattern).</li>
+   <li>An existing steal object in the window object</li>
+   <li><code>window.location.hash</code></li>
+</ul>
+<p>
+   The steal.js script tag is by far the most common approach. 
+   For the other methods,
+   check out <a href='steal.static.options.html'>steal.options</a> documentation.
+   To load <code>myapp/myapp.js</code> in development mode, your 
+   script tag would look like:
+</p>
+
+<p><pre><code class='javascript'>&lt;script type='text/javascript'
+    src='path/to/steal.js?<u><b>myapp/myapp.js</b></u>,<u><b>development</b></u>'>
+&lt;/script></code></pre><div class='whisper'>
+Typically you want this script tag right before the closing body tag (<code>&lt;/body></code>) of your page.
+</div></p>
+
+<p>Note that the path to <code>myapp/myapp.js</code> 
+is relative to the 'steal' folder's parent folder.  This
+is typically called the JavaScriptMVC root folder or just root folder if you're cool.</p>
+
+<p>And since JavaScriptMVC likes folder structures like:</p>
+
+<p><pre><code class='text'>\myapp
+   \myapp.js
+\steal
+   \steal.js</code></pre><p>If your path doesn't end with <code>.js</code>, JavaScriptMVC assumes you are loading an 
+application and will add <code>/myapp.js</code> on for you.  This means that this does the same thing too:</p></p>
+
+<p><pre><code class='javascript'>&lt;script type='text/javascript'
+       src='path/to/steal.js?<u><b>myapp</b></u>'>&lt;/script></code></pre><div class='whisper'>Steal, and everything else in JavaScriptMVC, provide these little shortcuts
+when you are doing things 'right'.  In this case, you save 9 characters 
+(<code>/myapp.js</code>) by organizing your app the way, JavaScriptMVC expects.</div>
+</div></p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

@@ -6,3 +6,4 @@ Gemfile.lock
 tmp/*
 .project
 public/**/.gitignore
+public/.gitignore

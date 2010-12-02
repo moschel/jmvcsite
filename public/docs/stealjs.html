@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>stealjs - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+		
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+		<div class="content">
+		    <a href="stealjs.html" class='selected choice page' style="padding-left: 20px">
+		    	<span class='remove' title="close"></span>
+				StealJS
+				
+			</a>
+		
+		</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+			
+	
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+			
+		    <a href="steal.html" class='result choice class' style="padding-left: 20px">
+		    	steal
+			</a>
+			
+		
+			
+		    <a href="steal.build.html" class='result choice function' style="padding-left: 20px">
+		    	steal.build
+			</a>
+			
+		
+			
+		    <a href="steal.clean.html" class='result choice function' style="padding-left: 20px">
+		    	steal.clean
+			</a>
+			
+		
+			
+		    <a href="steal.generate.html" class='result choice function' style="padding-left: 20px">
+		    	steal.generate
+			</a>
+			
+		
+			
+		    <a href="steal.get.html" class='result choice function' style="padding-left: 20px">
+		    	steal.get
+			</a>
+			
+		
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>StealJS&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    <div class='tags'>
+	        tags: <a href='core'>core</a>
+	    </div>
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<h1>StealJS</h1>
+
+<p>The StealJS project is a collection of comamnd and client based JavaScript utilities
+that make building, packaging, sharing and consuming JavaScript applications easy.</p>
+
+<h2>Tools</h2>
+
+<h3>Dependency Management</h3>
+
+<p>The <a href='steal.html'>steal script</a> (steal/steal.js) is a script loader and 
+dependency management tool.  Features:</p>
+
+<ul>
+    <li>Loads JavaScript, CSS, Less, CoffeeScript, and a variety of client-side templates.</li>
+    <li>Only loads a file once.</li>
+    <li>Can load relative to the current file.</li>
+</ul>
+
+<pre><code class='javascript'>steal.plugins('jquery/controller','jquery/view/ejs');</code></pre><h3>JS/CSS Concatenation and Compression</h3>
+The steal <a href='steal.build.html'>build</a> plugin makes compressing an application into a single compressed 
+JavaScript and CSS file extremely easy.  Features:
+
+<ul>
+    <li>Works with any application, even ones not using the steal script.</li>
+    <li>Configurable compressors (defaults to Google Closure).</li>
+    <li>Compresses Less and CoffeeScript.</li>
+    <li>Pre-processes and compresses client-side templates (templates don't have to be parsed).</li>
+    <li>Expandable architecture makes it easy to build other resources.</li>
+</ul>
+
+
+<pre><code class='text'>js steal/buildjs mypage.html</code></pre>
+
+<h3>Logging</h3>
+
+<p>Steal [steal.dev dev] logs messages cross browser.  Messages are removed in production builds.</p>
+
+<pre><code class='javascript'>steal.dev.log('something is happening');</code></pre>
+
+<h3>Code Generators</h3>
+
+<p>Steal <a href='steal.generate.html'>generate</a>  makes building code generators extremely easy.  Features:</p>
+
+<ul>
+    <li>Pre-packaged JMVC style code generators.</li>
+    <li>Very easy to write custom generators.</li>
+</ul>
+
+<pre><code class='text'>js steal/generate/app cookbook</code></pre>
+
+<h3>Package Management</h3>
+
+<p>Steal <a href='steal.get.html'>get</a> is a simple JavaScript version of <a href='http://rubygems.org/'>ruby gems</a>.  Features:
+ <ul>
+    <li>Download and install plugins from remote SVN or GIT repositories.  </li>
+    <li>Installs dependencies.</li>
+</ul></p>
+
+<pre><code class='text'>js steal/getjs http://github.com/jupiterjs/mxui/</code></pre><h3>Code Cleaner</h3>
+Steal <a href='steal.clean.html'>clean</a> cleans your code and checks it against JSLint. 
+
+
+<pre><code class='text'>js steal/clean path/to/page.html</code></pre> 
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

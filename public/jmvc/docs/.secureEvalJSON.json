@@ -1,0 +1,1 @@
+C({"name": ".secureEvalJSON", "params": {"src": {"description": "", "type": "", "optional": false, "order": 0, "name": "src"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "../funcunit/resources/json.js", "comment": "<p>jQuery.secureEvalJSON(src)\n       Evals JSON in a way that is <em>more</em> secure.</p>", "children": []})

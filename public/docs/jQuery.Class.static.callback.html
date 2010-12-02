@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>jQuery Class callback - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>jQuery.Class.static.callback&nbsp;
+	    	<span class='function type'><span class="typeEnd">function</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+ 
+ <div class='comment'><p>Returns a callback function for a function on this Class.
+The callback function ensures that 'this' is set appropriately.  </p>
+
+<pre><code class='javascript'>$.Class.extend("MyClass",{
+    getData: function() {
+        this.showing = null;
+        $.get("data.json",this.callback('gotData'),'json')
+    },
+    gotData: function( data ) {
+        this.showing = data;
+    }
+},{});
+MyClass.showData();</code></pre><h2>Currying Arguments</h2>
+Additional arguments to callback will fill in arguments on the returning function.
+
+<pre><code class='javascript'>$.Class.extend("MyClass",{
+   getData: function( <b>callback</b> ) {
+     $.get("data.json",this.callback('process',<b>callback</b>),'json');
+   },
+   process: function( <b>callback</b>, jsonData ) { //callback is added as first argument
+       jsonData.processed = true;
+       callback(jsonData);
+   }
+},{});
+MyClass.getData(showDataFunc)</code></pre><h2>Nesting Functions</h2>
+Callback can take an array of functions to call as the first argument.  When the returned callback function
+is called each function in the array is passed the return value of the prior function.  This is often used
+to eliminate currying initial arguments.
+
+<pre><code class='javascript'>$.Class.extend("MyClass",{
+   getData: function( callback ) {
+     //calls process, then callback with value from process
+     $.get("data.json",this.callback(['process2',callback]),'json') 
+   },
+   process2: function( type,jsonData ) {
+       jsonData.processed = true;
+       return [jsonData];
+   }
+},{});
+MyClass.getData(showDataFunc);</code></pre></div>
+ <pre class='signiture'><code>$.Class.callback(funcs, fname) -> Function</code></pre>
+  
+  <div class='params'>
+  
+    
+      <div class='param '>
+          <label>funcs</label>
+          <code>{}</code> 
+		   
+      </div>
+   
+      <div class='param '>
+          <label>fname</label>
+          <code>{String|Array}</code> 
+		   <p>If a string, it represents the function to be called. <br />
+If it is an array, it will call each function in order and pass the return value of the prior function to the
+next function.</p>
+      </div>
+ 
+
+ 
+     <div class='return'>
+         <label>returns</label> 
+         <code>{Function}</code> 
+		 <p>the callback function.</p>
+     </div>
+    
+ 
+ </div>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

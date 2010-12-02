@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>install - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>2.1. Installing JavaScriptMVC&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<h2>Requirements</h2>
+
+<p>JavaScriptMVC requires Java JRE 1.6 or greater for:</p>
+
+<ul>
+<li>Compression (Google Closure)</li>
+<li>Selenium run FuncUnit tests</li>
+<li>Easy updating</li>
+<li>Code Generators</li>
+</ul>
+
+<p>But your backend server can be written in any language. <br />
+Download <a href='http://www.java.com/en/download/index.jsp'>Java here</a>.</p>
+
+<h2>Getting JavaScriptMVC</h2>
+
+<p>There are 2 ways to get JavaScriptMVC:</p>
+
+<ul>
+<li>Forking it with git</li>
+<li><a href='download.html'>downloading</a> it</li>
+</ul>
+
+<p>We (and the community) would much prefer you to develop with git.  JavaScriptMVC is built 
+around modular development so it fits in perfectly
+with git development.  Plus we can trade improvements really easy. </p>
+
+<h2>Downloading</h2>
+
+<p><a href='download.html'>Download</a> the latest JavaScriptMVC. 
+Unzip the folder on your file system or web server. <br />
+If you are using this on a webserver, 
+unzip in a public folder where the server hosts static content.  </p>
+
+<div class='whisper'>PRO TIP: 
+  Unzip these files as
+  high in your apps folder structure as possible (i.e. don't
+  put them under a javascriptmvc folder in your public directory).
+</div>
+
+<h2>Installing JavaScriptMVC with GIT.</h2>
+
+<p>JavaScriptMVC is comprised of four sub projects:</p>
+
+<ul>
+<li><a href='http://github.com/jupiterjs/steal'>http://github.com/jupiterjs/steal</a></li>
+<li><a href='http://github.com/jupiterjs/jquerymx'>http://github.com/jupiterjs/jquerymx</a></li>
+<li><a href='http://github.com/jupiterjs/documentjs'>http://github.com/jupiterjs/documentjs</a></li>
+<li><a href='http://github.com/jupiterjs/funcunit'>http://github.com/jupiterjs/funcunit</a></li>
+</ul>
+
+<p>You want to fork each project and add it as a submodule to your project 
+in a public folder (where your server keeps static content).
+If these words mean nothing to you, or you'd like more 
+explanation, you might want to read
+<a href='developwithgit.html'>Developing With Git</a>.</p>
+
+<p>Forking the repos looks like:</p>
+
+<pre><code class='text'>git submodule add git@github.com:_YOU_/steal.git public/steal
+git submodule add git@github.com:_YOU_/jquerymx.git public/<b style='font-size: 14px;color: red'>jquery</b>
+git submodule add git@github.com:_YOU_/documentjs.git public/documentjs
+git submodule add git@github.com:_YOU_/funcunit.git public/funcunit</code></pre>
+
+<p>Notice that the javascriptmvc repository is put in a <b style='font-size: 14px;color: red'>jquery</b> folder.  </p>
+
+<p>After installing the repository, run:</p>
+
+<pre><code class='javascript'>[WINDOWS] > steal\js steal\make.js
+
+[Lin/Mac] > ./steal/js steal/make.js</code></pre>
+
+<h2>Verifing the install</h2>
+
+<p>In your public (or static) folder, you should have something that looks like:</p>
+
+<pre><code class='javascript'>static
+  \documentjs - DocumentJS library
+  \funcunit   - FuncUnit testing library
+  \jquery     - jQuery and MVC plugins
+  \steal      - compression and build system
+  \js.bat     - Windows Rhino shortcut
+  \js         - Mac/Linux Rhino shortcut</code></pre>
+
+<h2>Updating JavaScriptMVC</h2>
+
+<p>We are constantly improving JMVC.  If you're using git, you can
+just pull changes.  Otherwise, to get the latest, most
+error free code, in a console, type:</p>
+
+<p><pre><code class='text'>C:\workspace\Cookbook>js documentjs\update
+C:\workspace\Cookbook>js funcunit\update
+C:\workspace\Cookbook>js jquery\update
+C:\workspace\Cookbook>js steal\update</code></pre><div class='whisper'>
+    P.S. If you are using linux/mac you
+    want to use <code>./js</code> and change <code>\</code> 
+    to <code>/</code>.
+</div></p>
+
+<p>Continue to <a href='creating.html'>Creating Cookbook</a>.</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>developwithgit - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>Developing With Git&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<p>Thank you so much for developing with git.  You're making 
+the world better for yourself and others.  With GIT we can see any change
+you make to JavaScriptMVC and share them with other people.</p>
+
+<p>Before we get started, we're assuming you:</p>
+
+<ul>
+<li>know git</li>
+<li>have a github account setup</li>
+<li>have a project that is already using git</li>
+</ul>
+
+<p>If you don't, you might find the following resources helpful:</p>
+
+<ul>
+<li><a href='http://git.or.cz/course/svn.html'>Git - SVN Crash Course</a></li>
+<li><a href='http://github.com/'>Github</a> - creat an account here</li>
+<li><a href='http://help.github.com/msysgit-key-setup/'>SSH Key Setup</a></li>
+</ul>
+
+<h2>Git -ing JavaScriptMVC</h2>
+
+<p>JavaScriptMVC is comprised of four sub projects:</p>
+
+<ul>
+<li><a href='http://github.com/jupiterjs/steal'>http://github.com/jupiterjs/steal</a></li>
+<li><a href='http://github.com/jupiterjs/jquerymx'>http://github.com/jupiterjs/jquerymx</a></li>
+<li><a href='http://github.com/jupiterjs/documentjs'>http://github.com/jupiterjs/documentjs</a></li>
+<li><a href='http://github.com/jupiterjs/funcunit'>http://github.com/jupiterjs/funcunit</a></li>
+</ul>
+
+<p>We're going to fork each of these projects and add them as submodules to your
+master git project.</p>
+
+<h4>Forking</h4>
+
+<p>Assuming you have a github account set up, and are signed in,
+click each of the github links and click 
+the <img src='jmvc\images\fork.png' alt='fork'/> button (in the upper right of the page).</p>
+
+<div class='whisper'>PRO TIP: 
+  If you're working for a company, you should create company forks and give 
+  employees access to the company forks.  This will keep everyone using the 
+  same version.
+</div>
+
+<h4>Adding a submodule</h4>
+
+<p>Now add your forked repositories as submodules 
+to your project like:</p>
+
+<pre><code class='text'>git submodule add git@github.com:<b>_YOU_</b>/steal.git <b>public</b>/steal
+git submodule add git@github.com:_YOU_/jquerymx.git public/<b>jquery</b>
+git submodule add git@github.com:_YOU_/documentjs.git public/documentjs
+git submodule add git@github.com:_YOU_/funcunit.git public/funcunit</code></pre>
+
+<p><em>Note</em>: Learn a little more about submodules <a href="http://johnleach.co.uk/words/archives/2008/10/12/323/git-submodules-in-n-easy-steps Submodules">here</a>. </p>
+
+<p>There are 3 important things to notice:</p>
+
+<ol>
+<li><p>Change <b><em>YOU</em></b> with your github username.</p></li>
+<li><p>Add the submodules in a <b>public</b> folder, where the server hosts static content.</p></li>
+<li><p>Copy the javascriptmvc repository into a <b>jquery</b> folder.</p></li>
+</ol>
+
+<p>Next, you have to install and update the submodules.  Run:</p>
+
+<pre><code class='javascript'>git submodule init
+git submodule update</code></pre>
+
+<p>Finally, you just have to move the 'js' commands out of steal for convienence:</p>
+
+<pre><code class='text'>[WINDOWS] > steal\js steal\make.js
+
+[Lin/Mac] > ./steal/js steal/make.js</code></pre>
+
+<p>Yes, that was more annoying then just downloading it, but you're making the 
+world a better place for yourself and for others.</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

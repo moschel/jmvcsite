@@ -1,0 +1,1 @@
+C({"name": "pluginList", "params": {"name": {"description": "", "type": "Object", "optional": false, "order": 0, "name": "name"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parent": "../steal/get/get.js", "comment": "<p>looks for a url elsewhere</p>", "hide": true, "children": []})

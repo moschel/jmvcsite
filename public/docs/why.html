@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>why - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>0. Why JavaScriptMVC&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    <div class='tags'>
+	        tags: <a href='home'>home</a>
+	    </div>
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<p>So you've read through the list of features and you're still not 
+convinced JavaScriptMVC is right for you.  If you're looking for
+a little (<i>extremely biased</i>) advice, you've come to the 
+right place.</p>
+
+<h2>Who Should Use JavaScriptMVC?</h2>
+
+<p>JavaScriptMVC is designed to enhance jQuery development
+for medium to large projects.  You should care about
+code quality, performance, and maintainability.</p>
+
+<p>If you don't care about these things, or think jQuery is enough 
+for any project,
+you don't know what you're doing, and you will
+embarrass the project by using it. Leave now.</p>
+
+<p>If you do care, here's how JavaScriptMVC helps you:</p>
+
+<h2 style='color:#96A84A;'>
+    JavaScriptMVC makes everything you should be doing, as easy as possible!
+</h2>
+
+<p>Here's a few things you should be doing:</p>
+
+<ul>
+<li>Testing (especially automatic and functional testing)</li>
+<li>Documenting</li>
+<li>Breaking up code into logically organized files</li>
+<li>Compressing and concatenating your JavaScript files</li>
+<li>Using and organizing client side templates</li>
+<li>Making plugins that clean themselves up, are internally organized, and extendable.</li>
+<li>Error reporting</li>
+</ul>
+
+<p>All of these things are hard or impossible to do right with jQuery alone.  </p>
+
+<p>You can add your own automated testing library - 
+QUnit isn't automated, it's difficult to write Selenium tests.</p>
+
+<p>You can add your own documentation engine - JSDoc, make sure you keep track of every file!</p>
+
+<p>You can add your own way of loading and compressing scripts - RequireJS.</p>
+
+<p>You can use other client side template libraries - jquery-tmpl, but you won't be able to compress them into your build or put them in external files as easily.</p>
+
+<p>You can be careful to structure your jQuery plugins so they can be easily removed from an element, remove all event handlers, and provide some mechanism for extending or overwriting your plugin.</p>
+
+<p>You can devise your own way of doing error reporting.</p>
+
+<h3>OR ...</h3>
+
+<p>You can download JavaScriptMVC and run:</p>
+
+<pre><code class='text'>js steal/generate/app APPNAME</code></pre>
+
+<p>and get all of these things for free.</p>
+
+<p>JavaScriptMVC's greatest strength is it's integration. 
+Everything you should be doing is available immediately.</p>
+
+<h2>Ease of Adoption</h2>
+
+<p>Despite the huge amount of features, JavaScriptMVC is
+easy to learn.  </p>
+
+<p>Every component includes:</p>
+
+<ul>
+<li>thorough documentation</li>
+<li>demo examples</li>
+<li>test pages</li>
+<li>a write-up on <a href='http://jupiterjs.com/pages/javascriptmvc'>JavaScriptMVC's blog</a>.</li>
+</ul>
+
+<p>We are extremely active on the <a href='http://forum.javascriptmvc.com/'>forums</a>, with essentially
+zero unanswered questions.</p>
+
+<p>We've released a number of mini apps that are built the 
+JavaScriptMVC way.</p>
+
+<p><a href='http://jupiterjs.com'>Jupiter Consulting</a> provides JavaScriptMVC training, support,
+and consulting services.</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

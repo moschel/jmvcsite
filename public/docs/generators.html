@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>generators - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>Generators API&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    <div class='tags'>
+	        tags: <a href='app'>app</a> <a href='controller'>controller</a> <a href='engine'>engine</a> <a href='fixture'>fixture</a> <a href='functional_test'>functional_test</a> <a href='model'>model</a> <a href='page'>page</a> <a href='scaffold'>scaffold</a> <a href='unit_test'>unit_test</a>
+	    </div>
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<p><h1 class='addFavorite'>Generators API</h1>
+ Use generators to easily create files and functionality.  All generators are in the 
+ <i>jmvc\generate</i> folder.
+ <h2>app</h2>
+ Creates a new application, complete with the files you need to test, compress, and document
+ your application.</p>
+
+<p><pre><code class='text'>./js jmvc/generate/app APPNAME
+Generating...</p>
+
+<pre><code>         apps/APPNAME 
+         apps/APPNAME/init.js                     &lt;i class='comment'&gt;loads app's files&lt;/i&gt;
+         apps/APPNAME/compress.js                 &lt;i class='comment'&gt;compresses your app&lt;/i&gt;
+         apps/APPNAME/index.html                  &lt;i class='comment'&gt;page used for compression&lt;/i&gt;
+         apps/APPNAME/test
+         apps/APPNAME/test/unit.js                &lt;i class='comment'&gt;loads unit tests&lt;/i&gt;
+         apps/APPNAME/test/run_unit.js            &lt;i class='comment'&gt;runs unit tests&lt;/i&gt;
+         apps/APPNAME/test/functional.js          &lt;i class='comment'&gt;loads functional tests&lt;/i&gt;
+         apps/APPNAME/test/run_functional.js      &lt;i class='comment'&gt;runs functional tests&lt;/i&gt;
+         apps/APPNAME/test/selenium_config.js     &lt;i class='comment'&gt;config for selenium&lt;/i&gt;
+         apps/APPNAME/docs                        &lt;i class='comment'&gt;folder for docs&lt;/i&gt;
+         test/unit/truth_test.js                  &lt;i class='comment'&gt;basic test&lt;/i&gt;
+         test/functional/truth_functional_test.js &lt;i class='comment'&gt;basic test&lt;/i&gt;
+         APPNAME.html
+
+         Make sure to add new files to your application and test file! &lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;controller&lt;/h2&gt;
+</code></pre>
+
+<p>Creates a controller, with a basic test file.</p>
+
+<p><pre><code class='text'>js jmvc/generate/controller YourController
+Generating...</p>
+
+<pre><code>         controllers
+         controllers/your_controller.js
+         test/functional/your_test.js
+         views/your&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;engine&lt;/h2&gt;
+</code></pre>
+
+<p>Creates an engine directory and files.</p>
+
+<h2>fixture</h2>
+
+<p>Creates a simulated fixture response.</p>
+
+<p><pre><code class='text'>js jmvc/generate/fixture get /tasks/5.xml</code></pre><h2>functional_test</h2>
+Creates a functional tests</p>
+
+<h2>model</h2>
+
+<p>Creates a basic model, with scaffolding, and a function.</p>
+
+<h2>page</h2>
+
+<p>Creates a page that loads your application.</p>
+
+<h2>scaffold</h2>
+
+<p>Creates Create/Read/Update/Delete (CRUD) functionality for a type of data.  It also creates tests.</p>
+
+<p><pre><code class='text'>js jmvc/generate/scaffold ClassName</code></pre><h2>unit_test</h2>
+Creates a unit test</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>

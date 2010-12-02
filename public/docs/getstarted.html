@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>getstarted - JavaScriptMVC</title>
+        <link rel="stylesheet" type='text/css' href='../documentjs/jmvcdoc/style.css' />
+        <link rel="shortcut icon" href="../documentjs/jmvcdoc/images/favicon.ico" />
+	</head>
+	<body>
+	    
+        <div id='documentation'>
+	        <div id='top'>
+				<div class="topCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+				<div class="content">
+		            <div id="searchRoundCorners">
+		            	<input id='search' type='input' disabled='true'/>
+					</div>
+	                <div id='defaults'>
+						<ul id="menu" class="ui-menu">
+							<li class="ui-menu-item">
+	                    		<a class="menuLink" href="#&amp;search=&#42;&amp;who=index"><span class="menuSpan">Home</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#&amp;search=core"><span class="menuSpan">Core</span></a>
+							</li>
+							<li class="ui-menu-item">						
+		                    	<a class="menuLink" href="#favorites"><span class="menuSpan">Favorites</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&who=follow" title="Follow"><span class="menuSpan red">Follow</span></a>
+							</li>
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=contribute" title="Contribute"><span class="menuSpan red">Contribute</span></a>
+							</li>							
+							<li class="ui-menu-item">						
+								<a class="menuLink" href="#&amp;who=code" title="Code"><span class="menuSpan red">Code</span></a>
+							</li>
+						</ul>
+	            	</div>
+	                <div class="logo-text"><a href='http://javascriptmvc.com'>JavaScript<img src='../documentjs/jmvcdoc/images/logo80x30.png' class="logo-image"/></a></div>
+                </div>
+				<div class="bottomCorner">
+					<div class="right"></div>
+					<div class="left"></div>
+				</div>
+	        </div>
+            
+            <div id='bottom'>
+                
+            
+                <div id='left'>
+                    
+<div id='selected'>
+    
+		
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+		<div class="content">
+		    <a href="getstarted.html" class='selected choice page' style="padding-left: 20px">
+		    	<span class='remove' title="close"></span>
+				2. Get Started
+				
+			</a>
+		
+		</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+			
+	
+</div>
+<div id='results' style="display: block">
+
+		<div class="topCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	<div class="content">
+	    
+			
+		    <a href="compressing.html" class='result choice page' style="padding-left: 40px">
+		    	4. Compressing Cookbook
+			</a>
+			
+		
+			
+		    <a href="creating.html" class='result choice page' style="padding-left: 40px">
+		    	2. Creating Cookbook
+			</a>
+			
+		
+			
+		    <a href="documenting.html" class='result choice page' style="padding-left: 40px">
+		    	5. Documenting Cookbook
+			</a>
+			
+		
+			
+		    <a href="install.html" class='result choice page' style="padding-left: 40px">
+		    	1. Installing JavaScriptMVC
+			</a>
+			
+		
+			
+		    <a href="testing.html" class='result choice page' style="padding-left: 40px">
+		    	3. Testing Cookbook
+			</a>
+			
+		
+	</div>
+		<div class="bottomCorner">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+
+</div>
+
+
+
+                </div>
+                <div id='doc_container'>
+                    <div id='doc'>
+                        <div class='top'>
+	<div class="topCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>
+	<div class="content">
+	    <h1>2. Get Started&nbsp;
+	    	<span class='page type'><span class="typeEnd">page</span></span>&nbsp;
+	    	<span class="favorite favoriteoff">&nbsp;&nbsp;&nbsp;</span></h1>
+	    
+	    
+	    <div class='tags'>
+	        tags: <a href='home'>home</a> <a href='get started'>get started</a>
+	    </div>
+	    
+	    
+		
+		
+	</div>
+	<div class="bottomCorner">
+		<div class="right"></div>
+		<div class="left"></div>
+	</div>	
+</div>
+
+ 
+
+<p>This guide introduces the most important aspects of JavaScriptMVC (JMVC) by 
+creating a simple cookbook application.]</p>
+
+<h2>The Video</h2>
+
+<p><a href='http://cdn.javascriptmvc.com/videos/2_0/2_0_demo.htm' id='video' class='big_button floatLeft'>
+     <span>Watch</span>
+     <span class='label'>2.0 Video</span>
+ </a>  Check out the <a href='http://javascriptmvc.s3.amazonaws.com/videos/2_0/2_0_demo.htm'>
+ JavaScriptMVC 2.0</a> video that walks you through much of the getting started guide. <br />
+ It's an older treatment, but still touches on JMVC's strong points.</p>
+
+<h2 class='spaced'>Basics</h2>
+
+<p>Before jumping in, there are some things you should know:</p>
+
+<h3>Folder Structure</h3>
+
+<p>JMVC logically separates a basic app into following folder structure:</p>
+
+<pre><code class='javascript'>appname            - your app files
+    \controllers   - organized event handlers
+    \models        - manage data
+    \resources     - helper scripts
+    \test          - test files
+        \funcunit  - funcunit tests
+        \qunit     - qunit tests
+    \views         - html templates
+documentjs         - documentation engine
+funcunit           - testing tool
+jquery             - jquery and jQuery plugins (like $.Controller)
+steal              - compression and build</code></pre>
+
+<div class='whisper'>P.S. Don't worry about creating an 'appname' folder yet.  We'll do that in a second.</div>
+
+<h3> Plugins </h3>
+
+Everything is a plugin.  Just <a href='steal.static.plugins.html'>steal</a> the ones you need. 
+Plugins load their own dependencies and won't load duplicate files.  It looks like:
+
+
+<pre><code class='javascript'>steal.plugins('jquery/model',
+  'jquery/view',
+  'jquery/controller');</code></pre>
+<div class='whisper'>
+  P.S. <code>steal.plugins('a/b')</code> adds <code>a/b/b.js</code>
+ to your project. </div>
+
+<h3> Environments </h3>
+
+There are different environments for each phase of development:
+
+<ul>
+  <li> <span class='gray'>Development</span> - optimized for debugging and rapid development </li>
+  <li> <span class='gray'>Production</span> - loads compressed application file </li>
+</ul>
+
+<div class='whisper'>
+  P.S. The 'test' environment of 2.0 has been replaced by <a href='FuncUnit.html'>FuncUnit</a>
+  awesomeness. 
+</div>
+
+<h2>Making a Cookbook</h2>
+
+<p>Lets get started by <a href='install.html'>installing JavaScriptMVC</a>.</p>
+                    </div>
+					<div id="disqus_thread"></div>
+                </div>
+            </div>
+        </div>
+        <div id='low'>
+            <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+        </div>
+		<script type='text/javascript'>
+            DOCS_LOCATION = "../jmvc/docs/"
+            
+            COMMENTS_LOCATION = "http://jmvcs3.disqus.com/embed.js";
+            
+        </script>
+        <script type='text/javascript' 
+                src='../steal/steal.production.js?documentjs/jmvcdoc'>   
+        </script>
+        
+        	
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', "UA-2302003-4"]);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_setDomainName', '.javascriptmvc.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_setAllowHash', false]);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> 
+		
+        
+	</body>
+</html>
