@@ -175,4 +175,4 @@ $.extend($.Model, {
 
 
 	
-})(jQuery)
+})(jQuery);

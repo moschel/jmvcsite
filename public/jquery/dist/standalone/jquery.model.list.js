@@ -282,4 +282,4 @@ $.each([
 })
 
 
-})(jQuery)
+})(jQuery);

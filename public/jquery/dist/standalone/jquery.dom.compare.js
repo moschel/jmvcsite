@@ -61,4 +61,4 @@ jQuery.fn.compare = function(b){ //usually
 	return number;
 }
 
-})(jQuery)
+})(jQuery);

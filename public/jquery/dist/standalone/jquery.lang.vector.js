@@ -164,4 +164,4 @@ jQuery.fn.makePositioned = function() {
 	});
 };
 	
-})(jQuery)
+})(jQuery);

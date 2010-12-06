@@ -27,4 +27,4 @@
 		
 		return func;
 	}
-})(jQuery)
+})(jQuery);

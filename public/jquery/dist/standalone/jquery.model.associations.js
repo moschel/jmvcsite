@@ -187,4 +187,4 @@ and [jQuery.Model.static.belongsTo hasMany] methods.
 
 
 
-})(jQuery)
+})(jQuery);

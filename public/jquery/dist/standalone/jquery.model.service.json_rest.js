@@ -106,4 +106,4 @@ $.Model.service.jsonRest = $.Model.service({
     }
 });
 
-})(jQuery)
+})(jQuery);

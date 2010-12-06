@@ -78,4 +78,4 @@
 	jQuery.View.ext = ".micro"
 	
 
-})(jQuery)
+})(jQuery);

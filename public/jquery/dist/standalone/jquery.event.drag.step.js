@@ -52,4 +52,4 @@
 		oldPosition.call(this, offsetPositionv)
 	}
 	
-})(jQuery)
+})(jQuery);

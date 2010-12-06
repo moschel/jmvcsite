@@ -634,4 +634,4 @@
 	callback = jQuery.Class.callback;
 
 
-})(jQuery)
+})(jQuery);

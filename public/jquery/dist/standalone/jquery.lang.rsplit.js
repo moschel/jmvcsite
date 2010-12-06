@@ -28,4 +28,4 @@
 		}
 		return retArr;
 	};
-})(jQuery)
+})(jQuery);

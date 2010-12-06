@@ -136,4 +136,4 @@ See this in action:
 		}
 	   
    })
-})(jQuery)
+})(jQuery);

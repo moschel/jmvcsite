@@ -87,4 +87,4 @@ $.Model.List.extend("jQuery.Model.List.Cookie",
 	}
 })
 	
-})(jQuery)
+})(jQuery);

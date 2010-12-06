@@ -117,4 +117,4 @@ curStyles = function(){
 	return $.curStyles(this[0], $.makeArray(arguments))
 }
 
-})(jQuery)
+})(jQuery);

@@ -179,4 +179,4 @@ if(!window["OpenAjax"]){
 
 }
 OpenAjax.hub.registerLibrary("JavaScriptMVC", "http://JavaScriptMVC.com", "1.5", {});
-})(jQuery)
+})(jQuery);

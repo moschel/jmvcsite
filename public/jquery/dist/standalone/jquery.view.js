@@ -538,4 +538,4 @@
 		convert(funcs[i]);
 	}
 
-})(jQuery)
+})(jQuery);

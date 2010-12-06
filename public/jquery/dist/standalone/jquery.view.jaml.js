@@ -369,4 +369,4 @@ $.View.register({
 })
 
 
-})(jQuery)
+})(jQuery);

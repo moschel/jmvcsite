@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
 	  	standalone_file = ""
 	  	min_file = ""
 	  	for plugin in @plugins
-	  		puts "PLUGIN: "+plugin
 	  		standalone_name = plugin.gsub(/\/\w+\.js/, '.js').gsub(/\//, '.')
 	  		standalone_path = 'public/jquery/dist/standalone/'+standalone_name
 	  		standalone_contents = File.get_contents standalone_path
@@ -56,25 +55,30 @@ class ApplicationController < ActionController::Base
 		    io.write(min_contents)
 	  	end
 		# zip everything up
-	    io.put_next_entry("production/jquerymx-3.0.custom.js")
+	    io.put_next_entry("jquerymx-1.0.custom.js")
 	    io.write(standalone_file)
 	    
-	    io.put_next_entry("production/jquerymx-3.0.custom.min.js")
+	    io.put_next_entry("jquerymx-1.0.custom.min.js")
 	    io.write(min_file)
+	    
+	    io.put_next_entry("jquery-1.4.4.js")
+	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.4.js"))
+	    
+	    io.put_next_entry("jquery-1.4.4.min.js")
+	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.4.min.js"))
     }
    
   	send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", 
-  		:filename => "jquerymx-3.0.0.custom.zip", :type=>"application/zip"
+  		:filename => "jquerymx-1.0.custom.zip", :type=>"application/zip"
   end
   
   private
   
   def push_plugins(dependencies)
  	for dep in dependencies
-		if(@plugins.include? dep)
-			@plugins.delete(dep)
+		if(!@plugins.include? dep)
+		  @plugins.push(dep);
 		end
-		@plugins.push(dep);
 	end
   end
   

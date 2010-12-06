@@ -1,17 +1,7 @@
-#plugins{
-	width: 600px;
+body {
+	margin: 0px; padding: 0px;
+	overflow: hidden;
 }
-
-#plugins h1{
-	float: left;
-}
-
-#plugins .form-header{
-	margin: 0px 0px 20px;
-	overflow: auto;
-	width: 100%;
-}
-
 #plugins .dl_btn_container{
 	background: url(btn.png);
 	border: none;
@@ -48,7 +38,7 @@
 
 #plugins .section .section-desc{
 	float: left;
-	width: 140px;
+	width: 125px;
 }
 
 #plugins .section .section-desc h3{

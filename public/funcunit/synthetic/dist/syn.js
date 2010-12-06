@@ -243,10 +243,9 @@ extend(Syn,{
 				
 				//TODO, this should be textarea too
 				//and this might be for only text style inputs ... hmmmmm ....
+				
 				if(nodeName == "input" || nodeName == "textarea"){ 
-					
 					bind(element, "blur", function(){
-						
 						if( Syn.data(element,"syntheticvalue") !=  element.value){
 							
 							Syn.trigger("change", {}, element);
@@ -473,16 +472,19 @@ extend(Syn,{
 			event: function( type, options, element ) {
 				Syn.onParents(element, function(el){
 					if( Syn.isFocusable(el)){
-						
 						if(el.nodeName.toLowerCase() != 'html'){
 							el.focus();
 							activeElement = el;
-						}else if(activeElement){
+						}
+						else if(activeElement){
 							// TODO: The HTML element isn't focasable in IE, but it is
 							// in FF.  We should detect this and do a true focus instead
 							// of just a blur
-							if(Syn.helpers.getWindow(element).document.activeElement){
-								Syn.helpers.getWindow(element).document.activeElement.blur();
+							var doc = Syn.helpers.getWindow(element).document;
+							if(doc != window.document){
+								return false;
+							}else if(doc.activeElement){
+								doc.activeElement.blur();
 								activeElement = null;
 							}else{
 								activeElement.blur();
@@ -811,7 +813,7 @@ if (window.jQuery || (window.FuncUnit && window.FuncUnit.jquery)) {
 
 window.Syn = Syn;
 	
-})(jQuery);
+})(true);
 (function(){
 
 var h = Syn.helpers;
@@ -1102,7 +1104,7 @@ h.extend(Syn.create,{
 })();
 
 
-})(jQuery);
+})(true);
 (function(){
 	Syn.key.browsers = {
 		webkit : {
@@ -1253,7 +1255,7 @@ h.extend(Syn.create,{
 		return Syn.mouse.browsers.gecko;
 	})();
 	
-})(jQuery);
+})(true);
 (function(){
 
 var h = Syn.helpers,
@@ -2080,7 +2082,7 @@ h.extend(Syn.init.prototype,
 
 
 	
-})(jQuery);
+})(true);
 (function(){
 	// document body has to exists for this test
 
@@ -2355,4 +2357,4 @@ Syn.helpers.extend(Syn.init.prototype,{
 	}
 })
 
-})(jQuery)
+})(true)

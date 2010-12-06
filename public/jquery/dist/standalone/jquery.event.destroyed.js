@@ -34,4 +34,4 @@
 		oldClean(elems);
 	};
 
-})(jQuery)
+})(jQuery);

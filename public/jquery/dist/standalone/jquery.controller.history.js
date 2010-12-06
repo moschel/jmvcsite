@@ -168,4 +168,4 @@ $.extend($.Controller.prototype, {
 
 
    
-})(jQuery)
+})(jQuery);

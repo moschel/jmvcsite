@@ -23,4 +23,4 @@
 	jQuery.Controller.prototype.publish = function() {
 		OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
 	};
-})(jQuery)
+})(jQuery);

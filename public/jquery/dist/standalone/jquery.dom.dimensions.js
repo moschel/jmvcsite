@@ -136,4 +136,4 @@ height:
 
 })
 
-})(jQuery)
+})(jQuery);

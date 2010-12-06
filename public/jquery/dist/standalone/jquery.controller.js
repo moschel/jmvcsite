@@ -792,4 +792,4 @@
 		return this.controllers.apply(this, arguments)[0];
 	};
 
-})(jQuery)
+})(jQuery);

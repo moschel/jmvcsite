@@ -515,4 +515,4 @@
 			fixture: fixture
 		});
 	};
-})(jQuery)
+})(jQuery);

@@ -46,4 +46,4 @@
 			return this !== window;
 		}
 	}
-})(jQuery)
+})(jQuery);

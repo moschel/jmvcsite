@@ -67,4 +67,4 @@ $.Controller.extend("Tie",{
 });
 
 
-})(jQuery)
+})(jQuery);

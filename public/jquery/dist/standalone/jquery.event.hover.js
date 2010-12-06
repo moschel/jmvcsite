@@ -216,4 +216,4 @@ event.setupHelper( [
 		
 
 	
-})(jQuery)
+})(jQuery);

@@ -117,4 +117,4 @@ $.extend($.Scrollable.prototype,{
 	}
 })
 
-})(jQuery)
+})(jQuery);

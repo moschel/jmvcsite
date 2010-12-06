@@ -61,4 +61,4 @@ $.fn.withinBox = function(left, top, width, height, cache){
     return this.pushStack( jQuery.unique( ret ), "withinBox", jQuery.makeArray(arguments).join(",") );
 }
     
-})(jQuery)
+})(jQuery);

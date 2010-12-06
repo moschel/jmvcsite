@@ -41,4 +41,4 @@
 		}
 		return res;
 	}
-})(jQuery)
+})(jQuery);

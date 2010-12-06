@@ -345,4 +345,4 @@ $.EJS.Helpers.prototype.get_data = function(el){
 	return $.EJS.Helpers.get_data(el)
 };
 
-})(jQuery)
+})(jQuery);

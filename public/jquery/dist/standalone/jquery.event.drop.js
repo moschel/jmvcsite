@@ -298,4 +298,4 @@
 			this._canceled = true;
 		}
 	} )
-})(jQuery)
+})(jQuery);

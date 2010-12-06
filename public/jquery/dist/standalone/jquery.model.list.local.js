@@ -37,4 +37,4 @@ $.Model.List.extend("jQuery.Model.List.Local",
 	
 });
 	
-})(jQuery)
+})(jQuery);
