@@ -61,11 +61,11 @@ class ApplicationController < ActionController::Base
 	    io.put_next_entry("jquerymx-1.0.custom.min.js")
 	    io.write(min_file)
 	    
-	    io.put_next_entry("jquery-1.4.4.js")
-	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.4.js"))
+	    io.put_next_entry("jquery-1.4.3.js")
+	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.3.js"))
 	    
-	    io.put_next_entry("jquery-1.4.4.min.js")
-	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.4.min.js"))
+	    io.put_next_entry("jquery-1.4.3.min.js")
+	    io.write(File.get_contents("public/jquery/dist/standalone/jquery-1.4.3.min.js"))
     }
    
   	send_file "#{RAILS_ROOT}/tmp/myfile_#{Process.pid}", 
