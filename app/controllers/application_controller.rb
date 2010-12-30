@@ -56,14 +56,14 @@ class ApplicationController < ActionController::Base
 		    
 		    # increment count
 		    # TODO batch these
-		    plugin_instance = Plugin.update_all("count=count+1", 
-		    	"name LIKE '"+standalone_name+"'")
-		    if(!plugin_instance)
-		      	plugin_instance = Plugin.new :name => standalone_name, :count => 0  
-		    	plugin_instance.save
-			    plugin_instance = Plugin.update_all("count=count+1", 
-			    	"name LIKE '"+standalone_name+"'")
-		    end
+		    #plugin_instance = Plugin.update_all("count=count+1", 
+		    #	"name LIKE '"+standalone_name+"'")
+		    #if(!plugin_instance)
+		    #  	plugin_instance = Plugin.new :name => standalone_name, :count => 0  
+		    #	plugin_instance.save
+			#    plugin_instance = Plugin.update_all("count=count+1", 
+			#    	"name LIKE '"+standalone_name+"'")
+		    #end
 	  	end
 		# zip everything up
 	    io.put_next_entry("jquerymx-1.0.custom.js")
