@@ -18,7 +18,7 @@
 	$.fn.extend({
 		/**
 		 * @parent dom
-		 * @download jquery/dist/jquery.formparams.js
+		 * @download http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/dom/form_params/form_params.js
 		 * @plugin jquery/dom/form_params
 		 * @test jquery/dom/form_params/qunit.html
 		 * <p>Returns an object of name-value pairs that represents values in a form.  

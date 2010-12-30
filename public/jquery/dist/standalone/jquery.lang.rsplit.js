@@ -1,6 +1,6 @@
 (function( $ ) {
 	/**
-	 * @add jQuery.String.static
+	 * @add jQuery.String
 	 */
 	$.String.
 	/**

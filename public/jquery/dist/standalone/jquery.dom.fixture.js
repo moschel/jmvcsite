@@ -5,7 +5,7 @@
 	/**
 	 * @class jQuery.fixture
 	 * @plugin jquery/dom/fixture
-	 * @download jquery/dist/jquery.fixture.js
+	 * @download http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/dom/fixture/fixture.js
 	 * @test jquery/dom/fixture/qunit.html
 	 * @parent dom
 	 * 
@@ -437,9 +437,7 @@
 			if (/^\/\//.test(url) ) {
 				url = steal.root.join(settings.fixture.substr(2));
 			}
-			//@steal-remove-start
-			steal.dev.log("looking for fixture in " + url);
-			//@steal-remove-end
+			
 			settings.url = url;
 			settings.data = null;
 			settings.type = "GET";

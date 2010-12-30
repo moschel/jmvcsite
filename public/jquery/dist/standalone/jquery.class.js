@@ -347,13 +347,7 @@
 			}
 
 			self = this;
-			//@steal-remove-start
-			for( var i =0; i< funcs.length;i++ ) {
-				if(typeof funcs[i] == "string" && typeof this[funcs[i]] !== 'function'){
-					throw ("class.js "+( this.fullName || this.Class.fullName)+" does not have a "+funcs[i]+"method!");
-				}
-			}
-			//@steal-remove-end
+			
 			return function class_cb() {
 				var cur = args.concat(jQuery.makeArray(arguments)),
 					isString, 
@@ -488,7 +482,7 @@
 				if ( initializing ) return;
 
 				if ( this.constructor !== Class && arguments.length ) { //we are being called w/o new
-					return this.extend.apply(this, arguments)
+					return arguments.callee.extend.apply(arguments.callee, arguments)
 				} else { //we are being called w/ new
 					return this.Class.newInstance.apply(this.Class, arguments)
 				}
@@ -511,14 +505,7 @@
 					current = $.Class.getObject(parts.join('.')),
 					namespace = current;
 
-				//@steal-remove-start
-				if (!Class.nameOk ) {
-					steal.dev.isHappyName(fullName)
-				}
-				if(current[shortName]){
-					steal.dev.warn("class.js There's already something called "+fullName)
-				}
-				//@steal-remove-end
+				
 				current[shortName] = Class;
 			}
 

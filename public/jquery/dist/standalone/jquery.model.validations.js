@@ -2,7 +2,7 @@
 /**
 @page jquery.model.validations Validations
 @plugin jquery/mode/validations
-@download jquery/dist/jquery.model.validations.js
+@download  http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/model/validations/validations.js
 @test jquery/model/validations/qunit.html
 @parent jQuery.Model
 

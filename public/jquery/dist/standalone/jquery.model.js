@@ -3,7 +3,7 @@
 	/**
 	 * @class jQuery.Model
 	 * @tag core
-	 * @download jquery/dist/jquery.model.js
+	 * @download  http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/model/model.js
 	 * @test jquery/model/qunit.html
 	 * @plugin jquery/model
 	 * 
@@ -342,11 +342,7 @@
 			if ( this.listType ) {
 				this.list = new this.listType([]);
 			}
-			//@steal-remove-start
-			if (! proto ) {
-				steal.dev.warn("model.js "+this.fullName+" has no static properties.  You probably need  ,{} ")
-			}
-			//@steal-remove-end
+			
 			for(var name in ajaxMethods){
 				if(typeof this[name] === 'string'){
 					this[name] = ajaxMethods[name](this[name]);
@@ -451,6 +447,31 @@
 		 * recipes[0].helper() //-> 1
 		 * @codeend
 		 * 
+		 * Often wrapMany is used with this.callback inside a model's [jQuery.Model.static.findAll findAll]
+		 * method like:
+		 * 
+		 *     findAll : function(params, success, error){
+		 *       $.get('/url',
+		 *             params,
+		 *             this.callback(['wrapMany',success]) )
+		 *     }
+		 * 
+		 * If you are having problems getting your model to callback success correctly,
+		 * make sure a request is being made (with firebug's net tab).  Also, you 
+		 * might not use this.callback and instead do:
+		 * 
+		 *     findAll : function(params, success, error){
+		 *       self = this;
+		 *       $.get('/url',
+		 *             params,
+		 *             function(data){
+		 *               var wrapped = self.wrapMany(data);
+		 *               success(data)
+		 *             })
+		 *     }
+		 * 
+		 * ## API
+		 * 
 		 * @param {Array} instancesRawData an array of raw name - value pairs.
 		 * @return {Array} a JavaScript array of instances or a [jQuery.Model.List list] of instances
 		 *  if the model list plugin has been included.
@@ -465,11 +486,7 @@
 				raw = arr ? instancesRawData : instancesRawData.data,
 				length = raw.length,
 				i = 0;
-			//@steal-remove-start
-			if (! length ) {
-				steal.dev.warn("model.js wrapMany has no data.  If you're trying to wrap 1 item, use wrap. ")
-			}
-			//@steal-remove-end
+			
 			res._use_call = true; //so we don't call next function with all of these
 			for (; i < length; i++ ) {
 				res.push(this.wrap(raw[i]));
@@ -527,9 +544,7 @@
 		 * @param {Object} data The data to publish
 		 */
 		publish: function( event, data ) {
-			//@steal-remove-start
-			steal.dev.log("Model.js - publishing " + underscore(this.shortName) + "." + event);
-			//@steal-remove-end
+			
 			if ( window.OpenAjax ) {
 				OpenAjax.hub.publish(underscore(this.shortName) + "." + event, data);
 			}
@@ -1013,11 +1028,26 @@
 		/**
 		 * Returns elements that represent this model instance.  For this to work, your element's should
 		 * us the [jQuery.Model.prototype.identity identity] function in their class name.  Example:
-		 * @codestart html
-		 * <div class='todo <%= todo.identity() %>'> ... </div>
-		 * @codeend
-		 * This function should only rarely be used.  It breaks the architecture.
-		 * @param {String|jQuery|element} context - 
+		 * 
+		 *     <div class='todo <%= todo.identity() %>'> ... </div>
+		 * 
+		 * This also works if you hooked up the model:
+		 * 
+		 *     <div <%= todo %>> ... </div>
+		 *     
+		 * Typically, you'll use this as a response of an OpenAjax message:
+		 * 
+		 *     "todo.destroyed subscribe": function(called, todo){
+		 *       todo.elements(this.element).remove();
+		 *     }
+		 * 
+		 * ## API
+		 * 
+		 * @param {String|jQuery|element} context If provided, only elements inside this element
+		 * that represent this model will be returned.
+		 * 
+		 * @return {jQuery} Returns a jQuery wrapped nodelist of elements that have this model instances
+		 *  identity in their class name.
 		 */
 		elements: function( context ) {
 			return $("." + this.identity(), context);

@@ -29,7 +29,6 @@
 	 * @class jQuery.String
 	 */
 	var str = ($.String =
-	/* @Static*/
 	{
 		/**
 		 * @function strip
@@ -91,7 +90,7 @@
 			return parts.join('');
 		},
 		/**
-		 * Like [jQuery.String.static.classize|classize], but a space separates each 'word'
+		 * Like [jQuery.String.classize|classize], but a space separates each 'word'
 		 * @codestart
 		 * jQuery.String.niceName("one_two") //-> "One Two"
 		 * @codeend

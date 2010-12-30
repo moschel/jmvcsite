@@ -1,4 +1,6 @@
 Jmvcrails::Application.routes.draw do
+  resources :plugins
+
   match "pluginify" => "application#pluginify"
 
   # The priority is based upon order of creation:
