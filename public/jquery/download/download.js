@@ -9,6 +9,29 @@
 				});
 			$('#pluginForm').delegate("input[type=checkbox]", "change", 
 				$.proxy($.Downloader.changeHandler, $.Downloader));
+				
+			// append css if necessary
+			if(location.search && /csspath/.test(location.search)){
+				var path = location.search.split("=")[1];
+				var headID = document.getElementsByTagName("head")[0],
+					cssNode = document.createElement('link');
+				cssNode.type = 'text/css';
+				cssNode.rel = 'stylesheet';
+				cssNode.href = path;
+				cssNode.media = 'screen';
+				headID.appendChild(cssNode);
+			}
+			
+			$.Downloader.setupWordbreaks();
+		},
+		// inject <wbr> characters in labels
+		setupWordbreaks: function(){
+			var text, newText;
+			$(".plugin label").each(function(i){
+				text = $(this).text();
+				newText = text.replace(/\//g, "<wbr>/")
+				$(this).html(newText);
+			})
 		},
 		changeHandler: function(ev){
 			var $target = $(ev.target);
@@ -18,13 +41,17 @@
 			}
 		 	this.dependencies = [];
 		 	var $form = $target.closest('form'),
-				params = $form.formParams(), i;
+				params = $form.formParams(), i, queryVal;
 			for(i=0; i<params.plugins.length; i++){
 				this._pushPlugins(this._getDependencies(params.plugins[i]));
 			}
 			$('#pluginForm input[type=checkbox]').attr('checked', false);
 			for(i=0; i<this.dependencies.length; i++){
-				$('input[value='+this.dependencies[i]+']').attr('checked', true);
+				queryVal = this.dependencies[i]
+					.replace(new RegExp("/", "g"), "\\/")
+					.replace(new RegExp("\\.", "g"), "\\.");
+				$('input[value='+queryVal+']')
+					.attr('checked', true);
 			}
 		 },
 		 /**
@@ -36,8 +63,7 @@
 		 	var dep, i, index;
 		 	for(i=0; i<dependencies.length; i++){
 				dep = dependencies[i];
-				index = this.dependencies.indexOf(dep);
-				if(index != -1) {
+				if(!$.inArray(dep, this.dependencies)) {
 					this.dependencies.splice(index, 1);
 				}
 				this.dependencies.push(dep);

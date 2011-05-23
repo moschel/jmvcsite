@@ -18,7 +18,7 @@
 	$.fn.extend({
 		/**
 		 * @parent dom
-		 * @download jquery/dist/jquery.formparams.js
+		 * @download http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/dom/form_params/form_params.js
 		 * @plugin jquery/dom/form_params
 		 * @test jquery/dom/form_params/qunit.html
 		 * <p>Returns an object of name-value pairs that represents values in a form.  
@@ -62,7 +62,7 @@
 				}
 
 				var key = el.name,
-					value = $.fn.val.call([el]) || $.data(el, "value"),
+					value = $.data(el, "value") || $.fn.val.call([el]),
 					isRadioCheck = radioCheck.test(el.type),
 					parts = key.match(keyBreaker),
 					write = !isRadioCheck || !! el.checked,

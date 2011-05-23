@@ -308,7 +308,7 @@
 /**
  * @plugin jquery/model/list/cookie
  * @test jquery/model/list/cookie/qunit.html
- * @download jquery/dist/jquery.model.list.cookie.js
+ * @download  http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/model/list/cookie/cookie.js
  * @parent jQuery.Model.List
  * 
  * Provides a store-able list of model instances.  The following 
